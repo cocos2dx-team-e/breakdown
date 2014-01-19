@@ -248,6 +248,9 @@
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
 		FA3A01101883E59100630A01 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3A010E1883E59100630A01 /* GameScene.cpp */; };
 		FA6A16AF188BC15E00D74FF6 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FA6A16AE188BC15E00D74FF6 /* images */; };
+		FA7F55D7188BCE8400A8CC12 /* M in Resources */ = {isa = PBXBuildFile; fileRef = FA7F55D4188BCE8400A8CC12 /* M */; };
+		FA7F55D8188BCE8400A8CC12 /* S in Resources */ = {isa = PBXBuildFile; fileRef = FA7F55D5188BCE8400A8CC12 /* S */; };
+		FA7F55DC188BD26D00A8CC12 /* L in Resources */ = {isa = PBXBuildFile; fileRef = FA7F55DB188BD26D00A8CC12 /* L */; };
 		FAA46F5D188BB78200162EE7 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F5B188BB78200162EE7 /* Block.cpp */; };
 		FAA46F60188BB7B800162EE7 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F5E188BB7B800162EE7 /* Ball.cpp */; };
 		FAA46F63188BB7E100162EE7 /* Slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F61188BB7E100162EE7 /* Slider.cpp */; };
@@ -748,6 +751,10 @@
 		FA3A010E1883E59100630A01 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		FA3A010F1883E59100630A01 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
 		FA6A16AE188BC15E00D74FF6 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		FA7F55D2188BC9E700A8CC12 /* AppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppMacros.h; path = ../Classes/AppMacros.h; sourceTree = "<group>"; };
+		FA7F55D4188BCE8400A8CC12 /* M */ = {isa = PBXFileReference; lastKnownFileType = folder; path = M; sourceTree = "<group>"; };
+		FA7F55D5188BCE8400A8CC12 /* S */ = {isa = PBXFileReference; lastKnownFileType = folder; path = S; sourceTree = "<group>"; };
+		FA7F55DB188BD26D00A8CC12 /* L */ = {isa = PBXFileReference; lastKnownFileType = folder; path = L; sourceTree = "<group>"; };
 		FAA46F5B188BB78200162EE7 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../Classes/Block.cpp; sourceTree = "<group>"; };
 		FAA46F5C188BB78200162EE7 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../Classes/Block.h; sourceTree = "<group>"; };
 		FAA46F5E188BB7B800162EE7 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = ../Classes/Ball.cpp; sourceTree = "<group>"; };
@@ -1282,6 +1289,7 @@
 				FAA46F5F188BB7B800162EE7 /* Ball.h */,
 				FAA46F61188BB7E100162EE7 /* Slider.cpp */,
 				FAA46F62188BB7E100162EE7 /* Slider.h */,
+				FA7F55D2188BC9E700A8CC12 /* AppMacros.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1726,6 +1734,9 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA7F55DB188BD26D00A8CC12 /* L */,
+				FA7F55D4188BCE8400A8CC12 /* M */,
+				FA7F55D5188BCE8400A8CC12 /* S */,
 				FA6A16AE188BC15E00D74FF6 /* images */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
@@ -1827,6 +1838,9 @@
 				379BB9D017F03F3700829B88 /* json_valueiterator.inl in Resources */,
 				379BB9D217F03F3700829B88 /* sconscript in Resources */,
 				FA6A16AF188BC15E00D74FF6 /* images in Resources */,
+				FA7F55D7188BCE8400A8CC12 /* M in Resources */,
+				FA7F55D8188BCE8400A8CC12 /* S in Resources */,
+				FA7F55DC188BD26D00A8CC12 /* L in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

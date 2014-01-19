@@ -27,9 +27,15 @@ bool GameScene::init()
     {
         return false;
     }
-    
+
     setTouchMode(kCCTouchesOneByOne);
 	setTouchEnabled(true);
+    
+    // 背景表示
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    CCSprite* pBG = CCSprite::create("background.png");
+    pBG->setPosition(ccp(size.width * 0.5, size.height * 0.5));
+    this->addChild(pBG);
     
     {// Box2dの初期化
         

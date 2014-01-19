@@ -247,6 +247,9 @@
 		D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949D15BD2D9600D803EB /* Icon-72.png */; };
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
 		FA3A01101883E59100630A01 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3A010E1883E59100630A01 /* GameScene.cpp */; };
+		FAA46F5D188BB78200162EE7 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F5B188BB78200162EE7 /* Block.cpp */; };
+		FAA46F60188BB7B800162EE7 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F5E188BB7B800162EE7 /* Ball.cpp */; };
+		FAA46F63188BB7E100162EE7 /* Slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F61188BB7E100162EE7 /* Slider.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -743,6 +746,12 @@
 		D4F9F37B12E54555005CA6D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		FA3A010E1883E59100630A01 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		FA3A010F1883E59100630A01 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
+		FAA46F5B188BB78200162EE7 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../Classes/Block.cpp; sourceTree = "<group>"; };
+		FAA46F5C188BB78200162EE7 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = ../Classes/Block.h; sourceTree = "<group>"; };
+		FAA46F5E188BB7B800162EE7 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = ../Classes/Ball.cpp; sourceTree = "<group>"; };
+		FAA46F5F188BB7B800162EE7 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = ../Classes/Ball.h; sourceTree = "<group>"; };
+		FAA46F61188BB7E100162EE7 /* Slider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Slider.cpp; path = ../Classes/Slider.cpp; sourceTree = "<group>"; };
+		FAA46F62188BB7E100162EE7 /* Slider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Slider.h; path = ../Classes/Slider.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1261,10 +1270,16 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FAA46F5B188BB78200162EE7 /* Block.cpp */,
+				FAA46F5C188BB78200162EE7 /* Block.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				FA3A010E1883E59100630A01 /* GameScene.cpp */,
 				FA3A010F1883E59100630A01 /* GameScene.h */,
+				FAA46F5E188BB7B800162EE7 /* Ball.cpp */,
+				FAA46F5F188BB7B800162EE7 /* Ball.h */,
+				FAA46F61188BB7E100162EE7 /* Slider.cpp */,
+				FAA46F62188BB7E100162EE7 /* Slider.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -2030,6 +2045,9 @@
 				379BB9D317F03F3700829B88 /* CCSGUIReader.cpp in Sources */,
 				379BB9D417F03F3700829B88 /* CCSSceneReader.cpp in Sources */,
 				FA3A01101883E59100630A01 /* GameScene.cpp in Sources */,
+				FAA46F5D188BB78200162EE7 /* Block.cpp in Sources */,
+				FAA46F60188BB7B800162EE7 /* Ball.cpp in Sources */,
+				FAA46F63188BB7E100162EE7 /* Slider.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

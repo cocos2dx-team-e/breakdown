@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "Box2D/Box2D.h"
+#include "Slider.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -21,6 +22,8 @@ public:
     //
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     
+    //スライダー用
+    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     
     // Singleton
     static GameScene* sharedGameScene();
@@ -37,6 +40,9 @@ private:
     
     //
     Ball* mpBall;
+
+    //スライダー
+    slider* piece;
 };
 
 #endif /* defined(__GAME_SCENE_H__) */

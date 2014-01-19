@@ -27,7 +27,11 @@ bool GameScene::init()
     {
         return false;
     }
-    
+
+    //スライダーの初期化
+    piece = slider::create();
+    addChild(piece);
+
     setTouchMode(kCCTouchesOneByOne);
 	setTouchEnabled(true);
     
@@ -106,4 +110,14 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 float GameScene::getPTMRatio() const
 {
     return 100;
+}
+
+void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
+
+    //タップポイント取得
+    CCDirector * pDirector = pDirector->CCDirector::sharedDirector();
+    CCPoint touchPoint = pDirector->convertToGL(pTouch->getLocationInView());
+    //スライダーの移動
+    piece->moveSlider(touchPoint);
+
 }

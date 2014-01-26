@@ -3,6 +3,7 @@
 #include "Ball.h"
 #include "Block.h"
 #include "SimpleAudioEngine.h"
+#include "GamePhysicsContactListener.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -72,10 +73,18 @@ bool GameScene::init()
             groundBox.Set( b2Vec2( size.width, 0.0f ), b2Vec2( size.width, size.height ) );
             pGroundBody->CreateFixture( &groundBox, 0 );
         }
+
+        // 衝突イベントのリスナーを登録する
+        mpB2World->SetContactListener( new GamePhysicsContactListener() );
     }
-    
+
+    //スライダー生成
+    createSlider();
+    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+
     // Ballクラスの初期化
     mpBall = Ball::create();
+    mpBall->attach( player, ccp(0, 16) );
     addChild(mpBall);
 
     Block* pBlock = Block::create();
@@ -85,6 +94,14 @@ bool GameScene::init()
 
     //スライダー生成
     createSlider();
+
+#if 0 // テスト用にボールを沢山だせます
+    for( int lp = 0; lp < 20; ++lp ){
+        Ball* p = Ball::create();
+        p->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 ) );
+        addChild(p);
+    }
+#endif
 
     // TODO Startボタン押下でスタート
 
@@ -112,20 +129,22 @@ void GameScene::update(float delta)
     }
 }
 
-bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
-{
-    const CCPoint location =pTouch->getLocation();
-    
-    if( mpBall->boundingBox().containsPoint( location ) ){
-        mpBall->getB2Body()->ApplyForceToCenter( b2Vec2( (CCRANDOM_0_1()-0.5f)*25, CCRANDOM_0_1()*55 ) );
-    }
-    
-    return true;
-}
-
 float GameScene::getPTMRatio() const
 {
     return PTM_RATIO;
+}
+
+bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+{
+    const CCPoint location =pTouch->getLocation();
+
+    // 仮
+    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    if( player->boundingBox().containsPoint( location ) ){
+        mpBall->attach( player, ccp(0, 16) );
+    }
+
+    return true;
 }
 
 void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
@@ -142,6 +161,17 @@ void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
 
     player->setPosition(touchPoint);
 
+}
+
+void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
+{
+    const CCPoint location =pTouch->getLocation();
+
+    // スライダーの位置でタップを離したら、発射!!
+    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    if( player->boundingBox().containsPoint( location ) ){
+        mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 ) );
+    }
 }
 
 void GameScene::createSlider(){

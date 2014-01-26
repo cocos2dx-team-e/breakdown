@@ -68,9 +68,7 @@ bool GameScene::init()
     mpBall = Ball::create();
     addChild(mpBall);
 
-    //スライダーの初期化
-//    piece = Slider::create();
-//    addChild(piece);
+    //スライダー生成
     createSlider();
 
     CCLog("%s","breakdown App initialized.");

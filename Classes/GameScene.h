@@ -20,6 +20,7 @@ public:
     CREATE_FUNC(GameScene);
     
     virtual void update(float delta);
+    virtual void draw();
     
     //
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);

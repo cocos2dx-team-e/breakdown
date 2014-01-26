@@ -1,5 +1,6 @@
 #include "Ball.h"
 #include "Slider.h"
+#include "Block.h"
 #include "GameScene.h"
 
 Ball::Ball()
@@ -10,6 +11,10 @@ Ball::Ball()
 Ball::~Ball()
 {
     CC_SAFE_RELEASE(mpParticle);
+
+
+    //
+    GameScene::sharedGameScene()->getB2World()->DestroyBody( mpPhysicsSprite->getB2Body() );
 }
 
 bool Ball::init()
@@ -28,7 +33,7 @@ bool Ball::init()
         b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody( &bodyDef );
         {// 円の物理情報を登録する
             b2CircleShape shape;
-            shape.m_radius = 24.0f / GameScene::sharedGameScene()->getPTMRatio();
+            shape.m_radius = 16.0f / GameScene::sharedGameScene()->getPTMRatio();
 
             b2FixtureDef shapeDef;
             shapeDef.shape = &shape;
@@ -60,8 +65,8 @@ bool Ball::init()
     mpParticle->setLife( 1.0f );
     mpParticle->setLifeVar( 0.1f );
     //    mpParticle->setTotalParticles( 300 );
-    addChild( mpParticle );
-    
+//    addChild( mpParticle );
+
     scheduleUpdate();
     return true;
 }
@@ -105,8 +110,8 @@ void Ball::fire(const CCPoint& power)
 void Ball::contactWith(CCNode* target)
 {
     if( target->getTag() == NODE_TAG_BLOCK ){
-        // Block* block = (Block*)target;
-        // block->hit();
+        Block* block = (Block*)target;
+        block->hit();
     }
     else if( target->getTag() == NODE_TAG_SLIDER ){
     }

@@ -4,6 +4,7 @@
 #include "Block.h"
 #include "SimpleAudioEngine.h"
 #include "GamePhysicsContactListener.h"
+#include "GLES-Render.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -76,6 +77,11 @@ bool GameScene::init()
 
         // 衝突イベントのリスナーを登録する
         mpB2World->SetContactListener( new GamePhysicsContactListener() );
+
+        //
+        b2Draw* pB2Draw = new GLESDebugDraw();
+        pB2Draw->SetFlags( 0xffff );
+        mpB2World->SetDebugDraw( pB2Draw );
     }
 
     //スライダー生成
@@ -87,13 +93,12 @@ bool GameScene::init()
     mpBall->attach( player, ccp(0, 16) );
     addChild(mpBall);
 
+    //
     Block* pBlock = Block::create();
     pBlock->setLife(3);
     pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width * 0.5));
+    pBlock->setTag( NODE_TAG_BLOCK );
     addChild(pBlock);
-
-    //スライダー生成
-    createSlider();
 
 #if 0 // テスト用にボールを沢山だせます
     for( int lp = 0; lp < 20; ++lp ){
@@ -127,6 +132,16 @@ void GameScene::update(float delta)
         // generally best to keep the time step and iterations fixed.
         mpB2World->Step( delta, velocityIterations, positionIterations );
     }
+}
+
+void GameScene::draw()
+{
+    CCLayer::draw();
+
+    ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+    kmGLPushMatrix();
+    mpB2World->DrawDebugData();
+    kmGLPopMatrix();
 }
 
 float GameScene::getPTMRatio() const

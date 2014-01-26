@@ -249,6 +249,7 @@
 		FA3A01101883E59100630A01 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3A010E1883E59100630A01 /* GameScene.cpp */; };
 		FA55A2721894EB4A002FC3FA /* GamePhysicsContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA55A2701894EB4A002FC3FA /* GamePhysicsContactListener.cpp */; };
 		FA55A2751894EB5A002FC3FA /* titleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA55A2731894EB5A002FC3FA /* titleScene.cpp */; };
+		FA55A27C1894F64B002FC3FA /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA55A27A1894F64A002FC3FA /* GLES-Render.cpp */; };
 		FA6151071894B1F100F2D4E9 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6151061894B1F100F2D4E9 /* slider.png */; };
 		FA6151111894D63600F2D4E9 /* block in Resources */ = {isa = PBXBuildFile; fileRef = FA6151101894D63600F2D4E9 /* block */; };
 		FA6A16AF188BC15E00D74FF6 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FA6A16AE188BC15E00D74FF6 /* images */; };
@@ -758,6 +759,8 @@
 		FA55A2711894EB4A002FC3FA /* GamePhysicsContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePhysicsContactListener.h; path = ../Classes/GamePhysicsContactListener.h; sourceTree = "<group>"; };
 		FA55A2731894EB5A002FC3FA /* titleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = titleScene.cpp; path = ../Classes/titleScene.cpp; sourceTree = "<group>"; };
 		FA55A2741894EB5A002FC3FA /* titleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = titleScene.h; path = ../Classes/titleScene.h; sourceTree = "<group>"; };
+		FA55A27A1894F64A002FC3FA /* GLES-Render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "GLES-Render.cpp"; path = "../Classes/GLES-Render.cpp"; sourceTree = "<group>"; };
+		FA55A27B1894F64A002FC3FA /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GLES-Render.h"; path = "../Classes/GLES-Render.h"; sourceTree = "<group>"; };
 		FA6151061894B1F100F2D4E9 /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
 		FA61510D1894B81500F2D4E9 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Config.h; path = ../Classes/Config.h; sourceTree = "<group>"; };
 		FA6151101894D63600F2D4E9 /* block */ = {isa = PBXFileReference; lastKnownFileType = folder; path = block; sourceTree = "<group>"; };
@@ -1297,6 +1300,8 @@
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				FA55A2731894EB5A002FC3FA /* titleScene.cpp */,
 				FA55A2741894EB5A002FC3FA /* titleScene.h */,
+				FA55A27A1894F64A002FC3FA /* GLES-Render.cpp */,
+				FA55A27B1894F64A002FC3FA /* GLES-Render.h */,
 				FA3A010E1883E59100630A01 /* GameScene.cpp */,
 				FA3A010F1883E59100630A01 /* GameScene.h */,
 				FA55A2701894EB4A002FC3FA /* GamePhysicsContactListener.cpp */,
@@ -2088,6 +2093,7 @@
 				FAA46F63188BB7E100162EE7 /* Slider.cpp in Sources */,
 				FA55A2721894EB4A002FC3FA /* GamePhysicsContactListener.cpp in Sources */,
 				FA55A2751894EB5A002FC3FA /* titleScene.cpp in Sources */,
+				FA55A27C1894F64B002FC3FA /* GLES-Render.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

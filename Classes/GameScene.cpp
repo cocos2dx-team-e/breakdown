@@ -86,7 +86,7 @@ bool GameScene::init()
     mpBall->attach( player, ccp(0, 16) );
     addChild(mpBall);
 
-#if 1
+#if 0 // テスト用にボールを沢山だせます
     for( int lp = 0; lp < 20; ++lp ){
         Ball* p = Ball::create();
         p->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 ) );

@@ -26,8 +26,8 @@ bool Block::init()
     b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody(&bodyDef);
     {
         b2PolygonShape shape;
-        shape.SetAsBox(this->getContentSize().width / 2 / PTM_RATIO,
-                       this->getContentSize().height / 2 / PTM_RATIO);
+        shape.SetAsBox(this->getContentSize().width / 2 / PTM_RATIO * BLOCK_SCALE,
+                       this->getContentSize().height / 2 / PTM_RATIO * BLOCK_SCALE);
 
         b2FixtureDef shapeDef;
         shapeDef.shape = &shape;
@@ -38,6 +38,7 @@ bool Block::init()
     }
     setB2Body(pBody);
     setPTMRatio(PTM_RATIO);
+    setScale(BLOCK_SCALE);
 
     return true;
 }

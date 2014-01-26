@@ -32,7 +32,7 @@ bool GameScene::init()
 
     setTouchMode(kCCTouchesOneByOne);
 	setTouchEnabled(true);
-    
+
     // 背景表示
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     CCSprite* pBG = CCSprite::create("background.png");
@@ -76,6 +76,9 @@ bool GameScene::init()
     mpBall = Ball::create();
     addChild(mpBall);
 
+    //スライダー生成
+    createSlider();
+
     // TODO Startボタン押下でスタート
 
     CCLog("%s","breakdown App initialized.");
@@ -116,6 +119,35 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 float GameScene::getPTMRatio() const
 {
     return 100;
+}
+
+void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
+
+    //タップポイント取得
+    CCDirector * pDirector = pDirector->CCDirector::sharedDirector();
+    CCPoint touchPoint = pDirector->convertToGL(pTouch->getLocationInView());
+
+    //高さだけ固定
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    touchPoint.y = winSize.height*0.2;
+
+    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+
+    player->setPosition(touchPoint);
+
+}
+
+void GameScene::createSlider(){
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+    CCSprite* mainController = CCSprite::create("slider.png");
+    mainController->setPosition(ccp(winSize.width*0.5, winSize.height*0.2));
+    //画像縮小
+    mainController->setScale(0.4);
+
+    mainController->setTag(1);
+
+    this->addChild(mainController);
 }
 
 void GameScene::playBGM()

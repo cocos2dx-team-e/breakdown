@@ -4,10 +4,12 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "Box2D/Box2D.h"
+
 USING_NS_CC;
 USING_NS_CC_EXT;
 
 class Ball;
+
 
 class GameScene : public cocos2d::CCLayer
 {
@@ -21,6 +23,8 @@ public:
     //
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     
+    //スライダー用
+    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     
     // Singleton
     static GameScene* sharedGameScene();
@@ -31,6 +35,8 @@ public:
     
     // Pixel To Meter ?
     float getPTMRatio() const;
+
+    void createSlider();
     
 private:
     b2World* mpB2World;

@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "GameScene.h"
+#include "TitleScene.h"
 #include "AppMacros.h"
 
 USING_NS_CC;
@@ -60,7 +61,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setAnimationInterval(1.0 / 60);
     
     // create a scene. it's an autorelease object
+    // タイトル画面
+    //CCScene *pScene = TitleScene::scene();
     CCScene *pScene = GameScene::scene();
+
     // run
     pDirector->runWithScene( pScene );
 

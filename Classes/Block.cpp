@@ -14,13 +14,13 @@ Block::~Block()
 bool Block::init()
 {
     // Spriteの設定
-    CCTexture2D* pTexture = CCTextureCache::sharedTextureCache()->addImage("orange_48x16.png");
+    CCTexture2D* pTexture = CCTextureCache::sharedTextureCache()->addImage("orange.png");
     if(!CCPhysicsSprite::initWithTexture(pTexture)) {
         return false;
     }
 
     // 物理エンジン上の物質の設定
-    bodyDef.type = b2_dynamicBody;
+    bodyDef.type = b2_staticBody;
     bodyDef.userData = this;
 
     b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody(&bodyDef);
@@ -38,9 +38,6 @@ bool Block::init()
     }
     setB2Body(pBody);
     setPTMRatio(PTM_RATIO);
-
-    CCSize size = CCDirector::sharedDirector()->getWinSize();
-    setPosition(ccp(size.width * 0.5, size.width * 0.5));
 
     return true;
 }

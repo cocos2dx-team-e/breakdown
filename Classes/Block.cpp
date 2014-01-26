@@ -11,25 +11,16 @@ Block::~Block()
 {
 }
 
-Block Block::create(CCPoint p, int l)
-{
-    Block block = *Block::create();
-
-    block.point = p;
-    block.life = l;
-
-    return block;
-}
-
 bool Block::init()
 {
     // Spriteの設定
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCTexture2D* pTexture = CCTextureCache::sharedTextureCache()->addImage("orange_48x16.png");
+    if(!CCPhysicsSprite::initWithTexture(pTexture)) {
+        return false;
+    }
 
     // 物理エンジン上の物質の設定
     bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(getPositionX() / PTM_RATIO,
-                         getPositionY() / PTM_RATIO);
     bodyDef.userData = this;
 
     b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody(&bodyDef);
@@ -45,8 +36,23 @@ bool Block::init()
         shapeDef.restitution = 0.95f;
         pBody->CreateFixture(&shapeDef);
     }
+    setB2Body(pBody);
+    setPTMRatio(PTM_RATIO);
+
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    setPosition(ccp(size.width * 0.5, size.width * 0.5));
 
     return true;
+}
+
+void Block::setLife(int l)
+{
+    this->life = l;
+}
+
+void Block::setSpriteAndB2Position(CCPoint p)
+{
+    this->setPosition(p);
 }
 
 int Block::getLife()
@@ -66,7 +72,7 @@ void Block::hit()
 
 bool Block::isDead()
 {
-    if (this->life == 0) {
+    if (this->life <= 0) {
         return true;
     }
     return false;
@@ -75,5 +81,7 @@ bool Block::isDead()
 void Block::explode()
 {
     // 爆発エフェクトを表示する
+    CCLog("爆発エフェクトを表示する");
     // 効果音を出す
+    CCLog("効果音を出す");
 }

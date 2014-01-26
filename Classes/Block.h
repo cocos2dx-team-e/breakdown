@@ -11,20 +11,19 @@ USING_NS_CC_EXT;
 class Block
 : public CCPhysicsSprite
 {
-    CCPoint point; // ブロックの座標
     int life; // ブロックの体力
     b2BodyDef bodyDef; // 物理エンジン上の物質の定義
+
 public:
     Block();
     virtual ~Block();
     CREATE_FUNC(Block);
-
-    /*
-     位置と体力を指定してBlockのインスタンスを生成するstaticメソッド
-     */
-    static Block create(CCPoint p, int l);
-
     virtual bool init();
+
+    void setLife(int l);
+
+    // SpriteとB2Bodyの位置を設定する
+    void setSpriteAndB2Position(CCPoint p);
 
     int getLife(); // 残り体力
     void hit(); // ダメージを受けたときに呼ぶ

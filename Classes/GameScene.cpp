@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "Config.h"
 #include "Ball.h"
+#include "Block.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
@@ -76,6 +77,11 @@ bool GameScene::init()
     // Ballクラスの初期化
     mpBall = Ball::create();
     addChild(mpBall);
+
+    Block* pBlock = Block::create();
+    pBlock->setLife(3);
+    pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width * 0.5));
+    addChild(pBlock);
 
     //スライダー生成
     createSlider();

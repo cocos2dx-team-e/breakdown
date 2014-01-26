@@ -16,7 +16,7 @@ bool Ball::init()
     CCTexture2D* pTexture = CCTextureCache::sharedTextureCache()->addImage("dash.png");
     if( !CCPhysicsSprite::initWithTexture( pTexture ) )
         return false;
-    
+
     //
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;

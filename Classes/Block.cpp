@@ -59,12 +59,13 @@ int Block::getLife()
 
 void Block::hit()
 {
+    this->life--;
+
     if (this->isDead()) {
         // TODO 死んだときの処理
         CCLog("ブロックの体力が0");
         return;
     }
-    this->life--;
 
     // Spriteの画像をlife残量に応じて変更する
     CCTexture2D* pTexture;
@@ -72,7 +73,7 @@ void Block::hit()
         pTexture = CCTextureCache::sharedTextureCache()->addImage("dark_broken.png");
     } else if (life == 2) {
         pTexture = CCTextureCache::sharedTextureCache()->addImage("orange_broken.png");
-    } else if (life == 3) {
+    } else {
         pTexture = CCTextureCache::sharedTextureCache()->addImage("orange.png");
     }
     this->setTexture(pTexture);

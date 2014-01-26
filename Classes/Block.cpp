@@ -9,9 +9,13 @@ Block::~Block()
 {
 }
 
-Block Block::create(CCPoint p)
+Block Block::create(CCPoint p, int l)
 {
     Block block = *Block::create();
+
+    block.point = p;
+    block.life = l;
+	block.bodyDef.type = b2_dynamicBody;
 
     return block;
 }

@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "Config.h"
 #include "Ball.h"
 #include "SimpleAudioEngine.h"
 
@@ -118,7 +119,7 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 
 float GameScene::getPTMRatio() const
 {
-    return 100;
+    return PTM_RATIO;
 }
 
 void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){

@@ -21,7 +21,6 @@ bool Block::init()
 
     // 物理エンジン上の物質の設定
     bodyDef.type = b2_staticBody;
-    bodyDef.userData = this;
 
     b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody(&bodyDef);
     {
@@ -35,6 +34,10 @@ bool Block::init()
         shapeDef.friction = 0.1f;
         shapeDef.restitution = 0.95f;
         pBody->CreateFixture(&shapeDef);
+
+        // 自信にタグをセットして、衝突リスナーから判別できるようにする
+        this->setTag(NODE_TAG_BLOCK);
+        pBody->SetUserData( this );
     }
     setB2Body(pBody);
     setPTMRatio(PTM_RATIO);

@@ -25,7 +25,7 @@ bool Ball::init()
     mState = kState_Unknown;
 
     // 物理スプライトを初期化
-    mpPhysicsSprite = CCPhysicsSprite::createWithTexture( CCTextureCache::sharedTextureCache()->addImage("dash.png") );
+    mpPhysicsSprite = CCPhysicsSprite::createWithTexture( CCTextureCache::sharedTextureCache()->addImage("ball01.jpg") );
     {
         // 物理情報を定義
         b2BodyDef bodyDef;
@@ -97,14 +97,13 @@ void Ball::update(float delta)
     }
     else if( mState == kState_Move ){
         //
-        if( mpPhysicsSprite->getPosition().y < -50 ){
+        if( mpPhysicsSprite->getPosition().y < -100 ){
             mState = kState_Unknown;
             // 物理運動を停止する
             mpPhysicsSprite->getB2Body()->SetActive( false );
             //
             GameScene::sharedGameScene()->transitionScene( GameScene::TRANSITON_CODE_GAMEOVER );
         }
-
     }
 
     mpParticle->setPosition( mpPhysicsSprite->getPosition() );
@@ -128,6 +127,7 @@ void Ball::fire(const CCPoint& power)
     mState = kState_Move;
 
     // 力学を適用する
+    mpPhysicsSprite->getB2Body()->SetAwake( false );
     mpPhysicsSprite->getB2Body()->ApplyForceToCenter( b2Vec2( power.x, power.y ) );
 
     // 物理運動を開始する

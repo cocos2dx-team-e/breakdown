@@ -6,6 +6,8 @@
 
 #define BLOCK_SCALE 4.0f
 
+#define BLOCK_DEFAULT_LIFE 3
+
 enum {
     NODE_TAG = 1000,
 

@@ -99,15 +99,14 @@ bool GameScene::init()
 
     //
     Block* pBlock = Block::create();
-    pBlock->setLife(3);
+    pBlock->setLife(BLOCK_DEFAULT_LIFE);
     pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width * 0.5));
-    pBlock->setTag( NODE_TAG_BLOCK );
     addChild(pBlock);
 
 #if 0 // テスト用にボールを沢山だせます
     for( int lp = 0; lp < 20; ++lp ){
         Ball* p = Ball::create();
-        p->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 ) );
+        p->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 + 2.0f ) );
         addChild(p);
     }
 #endif
@@ -204,7 +203,7 @@ void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     // スライダーの位置でタップを離したら、発射!!
     CCSprite* player = (CCSprite *)this->getChildByTag(1);
     if( player->boundingBox().containsPoint( location ) ){
-        mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 ) );
+        mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1() * 1.0f + 2.0f ) );
     }
 }
 

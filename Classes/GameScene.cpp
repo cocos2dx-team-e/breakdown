@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "TitleScene.h"
 #include "Config.h"
 #include "Ball.h"
 #include "SimpleAudioEngine.h"
@@ -80,8 +81,6 @@ bool GameScene::init()
     //スライダー生成
     createSlider();
 
-    // TODO Startボタン押下でスタート
-
     CCLog("%s","breakdown App initialized.");
     scheduleUpdate();
     return true;
@@ -108,12 +107,13 @@ void GameScene::update(float delta)
 
 bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
+    
     const CCPoint location =pTouch->getLocation();
     
     if( mpBall->boundingBox().containsPoint( location ) ){
         mpBall->getB2Body()->ApplyForceToCenter( b2Vec2( (CCRANDOM_0_1()-0.5f)*25, CCRANDOM_0_1()*55 ) );
     }
-    
+        
     return true;
 }
 
@@ -156,4 +156,21 @@ void GameScene::playBGM()
     //BGMあれば実装
     //SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("bgm.mp3");
     //SimpleAudioEngine::sharedEngine()->playBackgroundMusic("bgm.mp3", true);
+}
+
+void GameScene::transitionScene(int transitionCode)
+{
+    //GameScene.h enumの定数により遷移
+    if (transitionCode == TRANSITON_CODE_GAMEOVER)
+    {
+
+        CCLOG("%s","GAMEOVER");
+        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,TitleScene::scene()));
+    }
+    else if(transitionCode == TRANSITON_CODE_CLEAR)
+    {
+        CCLOG("%s","CLEAR");
+        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,TitleScene::scene()));            
+    }
+   
 }

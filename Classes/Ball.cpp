@@ -1,4 +1,5 @@
 #include "Ball.h"
+#include "Slider.h"
 #include "GameScene.h"
 
 Ball::Ball()
@@ -13,33 +14,40 @@ Ball::~Ball()
 
 bool Ball::init()
 {
-    CCTexture2D* pTexture = CCTextureCache::sharedTextureCache()->addImage("dash.png");
-    if( !CCPhysicsSprite::initWithTexture( pTexture ) )
+    if( !CCNode::init() )
         return false;
-    
-    //
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_dynamicBody;
-    //    bodyDef.position.Set( 100, 100 );
-    b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody( &bodyDef );
+
+    mState = kState_Unknown;
+
+    // 物理スプライトを初期化
+    mpPhysicsSprite = CCPhysicsSprite::createWithTexture( CCTextureCache::sharedTextureCache()->addImage("dash.png") );
     {
-        b2CircleShape shape;
-        shape.m_radius = 24.0f / GameScene::sharedGameScene()->getPTMRatio();
-        
-        b2FixtureDef shapeDef;
-        shapeDef.shape = &shape;
-        shapeDef.density = 0.1f;
-        shapeDef.friction = 0.1f;
-        shapeDef.restitution = 0.95f;
-        pBody->CreateFixture( &shapeDef );
+        // 物理情報を定義
+        b2BodyDef bodyDef;
+        bodyDef.type = b2_dynamicBody;
+        b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody( &bodyDef );
+        {// 円の物理情報を登録する
+            b2CircleShape shape;
+            shape.m_radius = 24.0f / GameScene::sharedGameScene()->getPTMRatio();
+
+            b2FixtureDef shapeDef;
+            shapeDef.shape = &shape;
+            shapeDef.density = 0.1f;
+            shapeDef.friction = 0.1f;
+            shapeDef.restitution = 0.95f;
+            pBody->CreateFixture( &shapeDef );
+        }
+        // SpriteとPhysicaを関連付ける
+        mpPhysicsSprite->setB2Body( pBody );
+
+        // 自信にタグをセットして、衝突リスナーから判別できるようにする
+        this->setTag(NODE_TAG_BALL);
+        pBody->SetUserData( this );
     }
+    mpPhysicsSprite->setPTMRatio( GameScene::sharedGameScene()->getPTMRatio() );
+    addChild(mpPhysicsSprite);
     
-    //
-    setB2Body( pBody );
-    setPTMRatio( GameScene::sharedGameScene()->getPTMRatio() );
-    setPosition( ccp( 1000 * CCRANDOM_0_1(), 600 * CCRANDOM_0_1() ) ); //KARI
-    
-    //
+    // ボールにまとわりつくエフェクトを作成
     mpParticle = CCParticleGalaxy::create(); //CCParticleSun
     mpParticle->retain();
     mpParticle->setTexture( CCTextureCache::sharedTextureCache()->addImage("ccbParticleFire.png") );
@@ -52,24 +60,55 @@ bool Ball::init()
     mpParticle->setLife( 1.0f );
     mpParticle->setLifeVar( 0.1f );
     //    mpParticle->setTotalParticles( 300 );
-//    addChild( mpParticle );
+    addChild( mpParticle );
     
     scheduleUpdate();
     return true;
 }
 
-void Ball::attach(CCObject* targetObject, const CCPoint& offset)
-{
-}
-
-/// 指定の場所へ向かって発射する
-void Ball::fire(const CCPoint& targetPosition)
-{
-    
-}
-
-/// 移動中の処理等。毎フレーム行う処理
 void Ball::update(float delta)
 {
-    mpParticle->setPosition( getPosition() );
+    if( mState == kState_Attach ){
+        CC_ASSERT(mpAttachingTarget);
+        mpPhysicsSprite->setPosition( mpAttachingTarget->getPosition() + mAttachingTargetOffset );
+    }
+    else if( mState == kState_Attach ){
+    }
+
+    mpParticle->setPosition( mpPhysicsSprite->getPosition() );
 }
+
+///
+void Ball::attach(CCNode* targetObject, const CCPoint& offset)
+{
+    mState = kState_Attach;
+
+    // アタッチ情報を保存
+    mpAttachingTarget = targetObject;
+    mAttachingTargetOffset = offset;
+
+    // 物理運動を停止する
+    mpPhysicsSprite->getB2Body()->SetActive( false );
+}
+
+void Ball::fire(const CCPoint& power)
+{
+    mState = kState_Move;
+
+    // 力学を適用する
+    mpPhysicsSprite->getB2Body()->ApplyForceToCenter( b2Vec2( power.x, power.y ) );
+
+    // 物理運動を開始する
+    mpPhysicsSprite->getB2Body()->SetActive( true );
+}
+
+void Ball::contactWith(CCNode* target)
+{
+    if( target->getTag() == NODE_TAG_BLOCK ){
+        // Block* block = (Block*)target;
+        // block->hit();
+    }
+    else if( target->getTag() == NODE_TAG_SLIDER ){
+    }
+}
+

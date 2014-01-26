@@ -1,8 +1,10 @@
 #include "GameScene.h"
 #include "Ball.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace std;
+using namespace CocosDenshion;
 
 CCScene* GameScene::scene()
 {
@@ -36,7 +38,7 @@ bool GameScene::init()
     CCSprite* pBG = CCSprite::create("background.png");
     pBG->setPosition(ccp(size.width * 0.5, size.height * 0.5));
     this->addChild(pBG);
-    
+
     {// Box2dの初期化
         
         b2Vec2 gravity;
@@ -73,7 +75,9 @@ bool GameScene::init()
     // Ballクラスの初期化
     mpBall = Ball::create();
     addChild(mpBall);
-    
+
+    // TODO Startボタン押下でスタート
+
     CCLog("%s","breakdown App initialized.");
     scheduleUpdate();
     return true;
@@ -112,4 +116,11 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 float GameScene::getPTMRatio() const
 {
     return 100;
+}
+
+void GameScene::playBGM()
+{
+    //BGMあれば実装
+    //SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("bgm.mp3");
+    //SimpleAudioEngine::sharedEngine()->playBackgroundMusic("bgm.mp3", true);
 }

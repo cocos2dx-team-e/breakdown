@@ -4,6 +4,8 @@
 
 Ball::Ball()
 : mpParticle(NULL)
+, mpAttachingTarget(NULL)
+, mState(kState_Unknown)
 {
 }
 

@@ -152,7 +152,7 @@ void GameScene::onEnter()
     CCLayer::onEnter();
 
     // 再配置処理？
-    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
     mpBall->attach( player, ccp(0, 16) );
 
     scheduleUpdate();

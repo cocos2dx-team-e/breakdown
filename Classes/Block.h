@@ -11,13 +11,16 @@ USING_NS_CC_EXT;
 class Block
 : public CCPhysicsSprite
 {
+    CCPoint point; // ブロックの座標
     int life; // ブロックの体力
+    b2BodyDef spriteBodyDef; // 物理エンジン上の物質の定義
 public:
     Block();
     virtual ~Block();
     CREATE_FUNC(Block);
+    static Block create(CCPoint p);
 
-    void setLife(int life);
+
     int getLife();
     void hit();
     bool isDead();

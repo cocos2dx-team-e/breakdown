@@ -9,9 +9,11 @@ Block::~Block()
 {
 }
 
-void Block::setLife(int life)
+Block Block::create(CCPoint p)
 {
-    this->life = life;
+    Block block = *Block::create();
+
+    return block;
 }
 
 int Block::getLife()

@@ -24,6 +24,8 @@ public:
     };
 
     virtual bool init();
+    virtual ~GameScene();
+
     // ゲーム終了
     void transitionScene(int transitionCode);
 
@@ -32,6 +34,8 @@ public:
     
     virtual void update(float delta);
     virtual void draw();
+    virtual void onEnter();
+    virtual void onExit();
     
     //
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);

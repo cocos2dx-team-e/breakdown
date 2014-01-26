@@ -28,6 +28,11 @@ GameScene* GameScene::sharedGameScene()
     return pInstance;
 }
 
+GameScene::~GameScene()
+{
+    CCLOG("");
+}
+
 bool GameScene::init()
 {
     if (!CCLayer::init())
@@ -63,8 +68,8 @@ bool GameScene::init()
             
             b2EdgeShape groundBox;
             // bottom
-            groundBox.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( size.width, 0.0f ) );
-            pGroundBody->CreateFixture( &groundBox, 0 );
+//            groundBox.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( size.width, 0.0f ) );
+//            pGroundBody->CreateFixture( &groundBox, 0 );
             // top
             groundBox.Set( b2Vec2( 0.0f, size.height ), b2Vec2( size.width, size.height ) );
             pGroundBody->CreateFixture( &groundBox, 0 );
@@ -87,11 +92,9 @@ bool GameScene::init()
 
     //スライダー生成
     createSlider();
-    CCSprite* player = (CCSprite *)this->getChildByTag(1);
 
     // Ballクラスの初期化
     mpBall = Ball::create();
-    mpBall->attach( player, ccp(0, 16) );
     addChild(mpBall);
 
     //
@@ -110,7 +113,6 @@ bool GameScene::init()
 #endif
 
     CCLog("%s","breakdown App initialized.");
-    scheduleUpdate();
     return true;
 }
 
@@ -141,6 +143,24 @@ void GameScene::draw()
     kmGLPushMatrix();
     mpB2World->DrawDebugData();
     kmGLPopMatrix();
+}
+
+void GameScene::onEnter()
+{
+    CCLayer::onEnter();
+
+    // 再配置処理？
+    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    mpBall->attach( player, ccp(0, 16) );
+
+    scheduleUpdate();
+}
+
+void GameScene::onExit()
+{
+    CCLayer::onExit();
+
+    unscheduleUpdate();
 }
 
 float GameScene::getPTMRatio() const

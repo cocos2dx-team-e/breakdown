@@ -33,6 +33,9 @@ public:
     virtual bool init();
     /// 移動中の処理等。毎フレーム行う処理
     virtual void update(float delta);
+    ///
+    virtual void onEnter();
+    virtual void onExit();
     
     /// 指定のオブジェクトのアタッチする
     virtual void attach(CCNode* targetObject, const CCPoint& offset);

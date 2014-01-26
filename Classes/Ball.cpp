@@ -51,7 +51,14 @@ bool Ball::init()
     }
     mpPhysicsSprite->setPTMRatio( GameScene::sharedGameScene()->getPTMRatio() );
     addChild(mpPhysicsSprite);
-    
+
+    return true;
+}
+
+void Ball::onEnter()
+{
+    CCNode::onEnter();
+
     // ボールにまとわりつくエフェクトを作成
     mpParticle = CCParticleGalaxy::create(); //CCParticleSun
     mpParticle->retain();
@@ -65,10 +72,21 @@ bool Ball::init()
     mpParticle->setLife( 1.0f );
     mpParticle->setLifeVar( 0.1f );
     //    mpParticle->setTotalParticles( 300 );
-//    addChild( mpParticle );
+    addChild( mpParticle );
 
+    //
     scheduleUpdate();
-    return true;
+}
+
+void Ball::onExit()
+{
+    CCNode::onExit();
+
+    //
+    unscheduleUpdate();
+
+    //
+    removeChild( mpParticle );
 }
 
 void Ball::update(float delta)
@@ -77,7 +95,16 @@ void Ball::update(float delta)
         CC_ASSERT(mpAttachingTarget);
         mpPhysicsSprite->setPosition( mpAttachingTarget->getPosition() + mAttachingTargetOffset );
     }
-    else if( mState == kState_Attach ){
+    else if( mState == kState_Move ){
+        //
+        if( mpPhysicsSprite->getPosition().y < -50 ){
+            mState = kState_Unknown;
+            // 物理運動を停止する
+            mpPhysicsSprite->getB2Body()->SetActive( false );
+            //
+            GameScene::sharedGameScene()->transitionScene( GameScene::TRANSITON_CODE_GAMEOVER );
+        }
+
     }
 
     mpParticle->setPosition( mpPhysicsSprite->getPosition() );

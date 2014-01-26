@@ -44,7 +44,8 @@ private:
     //
     Ball* mpBall;
 
-
+protected:
+    void playBGM();
 };
 
 #endif /* defined(__GAME_SCENE_H__) */

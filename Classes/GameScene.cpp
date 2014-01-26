@@ -1,8 +1,10 @@
 #include "GameScene.h"
 #include "Ball.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace std;
+using namespace CocosDenshion;
 
 CCScene* GameScene::scene()
 {
@@ -30,6 +32,12 @@ bool GameScene::init()
 
     setTouchMode(kCCTouchesOneByOne);
 	setTouchEnabled(true);
+
+    // 背景表示
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    CCSprite* pBG = CCSprite::create("background.png");
+    pBG->setPosition(ccp(size.width * 0.5, size.height * 0.5));
+    this->addChild(pBG);
 
     {// Box2dの初期化
         
@@ -70,6 +78,8 @@ bool GameScene::init()
 
     //スライダー生成
     createSlider();
+
+    // TODO Startボタン押下でスタート
 
     CCLog("%s","breakdown App initialized.");
     scheduleUpdate();
@@ -138,4 +148,11 @@ void GameScene::createSlider(){
     mainController->setTag(1);
 
     this->addChild(mainController);
+}
+
+void GameScene::playBGM()
+{
+    //BGMあれば実装
+    //SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("bgm.mp3");
+    //SimpleAudioEngine::sharedEngine()->playBackgroundMusic("bgm.mp3", true);
 }

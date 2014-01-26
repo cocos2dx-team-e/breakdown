@@ -9,16 +9,14 @@ USING_NS_CC_EXT;
 #include <Box2D/Box2D.h>
 
 class Slider
-: public CCSprite
+: public CCPhysicsSprite
 {
+    b2BodyDef bodyDef; // 物理エンジン上の物質の定義
 public:
-
+    Slider();
+    virtual ~Slider();
     CREATE_FUNC(Slider);
-
     virtual bool init();
-
-    virtual void move(CCPoint CCpoint);
-
 };
 
 

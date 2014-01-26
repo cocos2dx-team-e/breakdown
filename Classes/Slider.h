@@ -1,17 +1,23 @@
 #ifndef __breakdown__Slider__
 #define __breakdown__Slider__
 
-#include "cocos2D.h"
+#include "cocos2d.h"
+#include "cocos-ext.h"
 USING_NS_CC;
+USING_NS_CC_EXT;
 
-class Slider : public CCPhysicsSprite{
+#include <Box2D/Box2D.h>
+
+class Slider
+: public CCSprite
+{
 public:
-    Slider();
-    CREATE_FUNC(Ball);
+
+    CREATE_FUNC(Slider);
 
     virtual bool init();
 
-    void move(CCPoint CCpoint);
+    virtual void move(CCPoint CCpoint);
 
 };
 

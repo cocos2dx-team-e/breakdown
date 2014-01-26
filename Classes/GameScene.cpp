@@ -28,13 +28,9 @@ bool GameScene::init()
         return false;
     }
 
-    //スライダーの初期化
-    piece = slider::create();
-    addChild(piece);
-
     setTouchMode(kCCTouchesOneByOne);
 	setTouchEnabled(true);
-    
+
     {// Box2dの初期化
         
         b2Vec2 gravity;
@@ -71,7 +67,12 @@ bool GameScene::init()
     // Ballクラスの初期化
     mpBall = Ball::create();
     addChild(mpBall);
-    
+
+    //スライダーの初期化
+//    piece = Slider::create();
+//    addChild(piece);
+    createSlider();
+
     CCLog("%s","breakdown App initialized.");
     scheduleUpdate();
     return true;
@@ -117,7 +118,26 @@ void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
     //タップポイント取得
     CCDirector * pDirector = pDirector->CCDirector::sharedDirector();
     CCPoint touchPoint = pDirector->convertToGL(pTouch->getLocationInView());
-    //スライダーの移動
-    piece->moveSlider(touchPoint);
 
+    //高さだけ固定
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    touchPoint.y = winSize.height*0.2;
+
+    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+
+    player->setPosition(touchPoint);
+
+}
+
+void GameScene::createSlider(){
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+    CCSprite* mainController = CCSprite::create("slider.png");
+    mainController->setPosition(ccp(winSize.width*0.5, winSize.height*0.2));
+    //画像縮小
+    mainController->setScale(0.4);
+
+    mainController->setTag(1);
+
+    this->addChild(mainController);
 }

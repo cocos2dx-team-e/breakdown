@@ -4,11 +4,12 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "Box2D/Box2D.h"
-#include "Slider.h"
+
 USING_NS_CC;
 USING_NS_CC_EXT;
 
 class Ball;
+
 
 class GameScene : public cocos2d::CCLayer
 {
@@ -34,6 +35,8 @@ public:
     
     // Pixel To Meter ?
     float getPTMRatio() const;
+
+    void createSlider();
     
 private:
     b2World* mpB2World;
@@ -41,8 +44,7 @@ private:
     //
     Ball* mpBall;
 
-    //スライダー
-    slider* piece;
+
 };
 
 #endif /* defined(__GAME_SCENE_H__) */

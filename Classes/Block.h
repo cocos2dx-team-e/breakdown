@@ -24,6 +24,8 @@ public:
      */
     static Block create(CCPoint p, int l);
 
+    virtual bool init();
+
     int getLife(); // 残り体力
     void hit(); // ダメージを受けたときに呼ぶ
     bool isDead(); // 生死判定

@@ -5,6 +5,7 @@
 #define PTM_RATIO 100
 
 #define BLOCK_SCALE 4.0f
+#define SLIDER_SCALE 0.4f
 
 enum {
     NODE_TAG = 1000,

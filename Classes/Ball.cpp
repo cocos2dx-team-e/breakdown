@@ -1,5 +1,4 @@
 #include "Ball.h"
-#include "Slider.h"
 #include "Block.h"
 #include "GameScene.h"
 

@@ -3,6 +3,7 @@
 #include "Config.h"
 #include "Ball.h"
 #include "Block.h"
+#include "Slider.h"
 #include "SimpleAudioEngine.h"
 #include "GamePhysicsContactListener.h"
 #include "GLES-Render.h"
@@ -86,8 +87,9 @@ bool GameScene::init()
     }
 
     //スライダー生成
-    createSlider();
-    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    Slider* player = Slider::create();
+    player->setPosition(ccp(size.width*0.5, size.height*0.2));
+    addChild(player);
 
     // Ballクラスの初期化
     mpBall = Ball::create();
@@ -153,7 +155,7 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     const CCPoint location =pTouch->getLocation();
 
     // 仮
-    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
     if( player->boundingBox().containsPoint( location ) ){
         mpBall->attach( player, ccp(0, 16) );
     }
@@ -171,7 +173,7 @@ void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     touchPoint.y = winSize.height*0.2;
 
-    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
 
     player->setPosition(touchPoint);
 
@@ -182,23 +184,10 @@ void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     const CCPoint location =pTouch->getLocation();
 
     // スライダーの位置でタップを離したら、発射!!
-    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
     if( player->boundingBox().containsPoint( location ) ){
         mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 ) );
     }
-}
-
-void GameScene::createSlider(){
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-
-    CCSprite* mainController = CCSprite::create("slider.png");
-    mainController->setPosition(ccp(winSize.width*0.5, winSize.height*0.2));
-    //画像縮小
-    mainController->setScale(0.4);
-
-    mainController->setTag(1);
-
-    this->addChild(mainController);
 }
 
 void GameScene::playBGM()

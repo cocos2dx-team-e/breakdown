@@ -246,12 +246,13 @@
 		D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949B15BD2D8E00D803EB /* Icon-114.png */; };
 		D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949D15BD2D9600D803EB /* Icon-72.png */; };
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
+		FA213F03189502DC00E4D410 /* GamePhysicsContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA213EFD189502DC00E4D410 /* GamePhysicsContactListener.cpp */; };
+		FA213F04189502DC00E4D410 /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA213EFF189502DC00E4D410 /* GLES-Render.cpp */; };
+		FA213F05189502DC00E4D410 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA213F01189502DC00E4D410 /* TitleScene.cpp */; };
+		FA213F081895034000E4D410 /* block in Resources */ = {isa = PBXBuildFile; fileRef = FA213F061895034000E4D410 /* block */; };
+		FA213F091895034000E4D410 /* breakout-set in Resources */ = {isa = PBXBuildFile; fileRef = FA213F071895034000E4D410 /* breakout-set */; };
 		FA3A01101883E59100630A01 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3A010E1883E59100630A01 /* GameScene.cpp */; };
-		FA55A2721894EB4A002FC3FA /* GamePhysicsContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA55A2701894EB4A002FC3FA /* GamePhysicsContactListener.cpp */; };
-		FA55A2751894EB5A002FC3FA /* titleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA55A2731894EB5A002FC3FA /* titleScene.cpp */; };
-		FA55A27C1894F64B002FC3FA /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA55A27A1894F64A002FC3FA /* GLES-Render.cpp */; };
 		FA6151071894B1F100F2D4E9 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6151061894B1F100F2D4E9 /* slider.png */; };
-		FA6151111894D63600F2D4E9 /* block in Resources */ = {isa = PBXBuildFile; fileRef = FA6151101894D63600F2D4E9 /* block */; };
 		FA6A16AF188BC15E00D74FF6 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FA6A16AE188BC15E00D74FF6 /* images */; };
 		FAA46F5D188BB78200162EE7 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F5B188BB78200162EE7 /* Block.cpp */; };
 		FAA46F60188BB7B800162EE7 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA46F5E188BB7B800162EE7 /* Ball.cpp */; };
@@ -753,17 +754,18 @@
 		D4EF949D15BD2D9600D803EB /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../proj.ios/Icon-72.png"; sourceTree = "<group>"; };
 		D4EF949F15BD2D9800D803EB /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-144.png"; path = "../proj.ios/Icon-144.png"; sourceTree = "<group>"; };
 		D4F9F37B12E54555005CA6D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		FA213EFC189502DC00E4D410 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Config.h; path = ../Classes/Config.h; sourceTree = "<group>"; };
+		FA213EFD189502DC00E4D410 /* GamePhysicsContactListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamePhysicsContactListener.cpp; path = ../Classes/GamePhysicsContactListener.cpp; sourceTree = "<group>"; };
+		FA213EFE189502DC00E4D410 /* GamePhysicsContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePhysicsContactListener.h; path = ../Classes/GamePhysicsContactListener.h; sourceTree = "<group>"; };
+		FA213EFF189502DC00E4D410 /* GLES-Render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "GLES-Render.cpp"; path = "../Classes/GLES-Render.cpp"; sourceTree = "<group>"; };
+		FA213F00189502DC00E4D410 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GLES-Render.h"; path = "../Classes/GLES-Render.h"; sourceTree = "<group>"; };
+		FA213F01189502DC00E4D410 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; };
+		FA213F02189502DC00E4D410 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
+		FA213F061895034000E4D410 /* block */ = {isa = PBXFileReference; lastKnownFileType = folder; path = block; sourceTree = "<group>"; };
+		FA213F071895034000E4D410 /* breakout-set */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "breakout-set"; sourceTree = "<group>"; };
 		FA3A010E1883E59100630A01 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		FA3A010F1883E59100630A01 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
-		FA55A2701894EB4A002FC3FA /* GamePhysicsContactListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamePhysicsContactListener.cpp; path = ../Classes/GamePhysicsContactListener.cpp; sourceTree = "<group>"; };
-		FA55A2711894EB4A002FC3FA /* GamePhysicsContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePhysicsContactListener.h; path = ../Classes/GamePhysicsContactListener.h; sourceTree = "<group>"; };
-		FA55A2731894EB5A002FC3FA /* titleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = titleScene.cpp; path = ../Classes/titleScene.cpp; sourceTree = "<group>"; };
-		FA55A2741894EB5A002FC3FA /* titleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = titleScene.h; path = ../Classes/titleScene.h; sourceTree = "<group>"; };
-		FA55A27A1894F64A002FC3FA /* GLES-Render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "GLES-Render.cpp"; path = "../Classes/GLES-Render.cpp"; sourceTree = "<group>"; };
-		FA55A27B1894F64A002FC3FA /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GLES-Render.h"; path = "../Classes/GLES-Render.h"; sourceTree = "<group>"; };
 		FA6151061894B1F100F2D4E9 /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
-		FA61510D1894B81500F2D4E9 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Config.h; path = ../Classes/Config.h; sourceTree = "<group>"; };
-		FA6151101894D63600F2D4E9 /* block */ = {isa = PBXFileReference; lastKnownFileType = folder; path = block; sourceTree = "<group>"; };
 		FA6A16AE188BC15E00D74FF6 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		FA7F55D2188BC9E700A8CC12 /* AppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppMacros.h; path = ../Classes/AppMacros.h; sourceTree = "<group>"; };
 		FAA46F5B188BB78200162EE7 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = ../Classes/Block.cpp; sourceTree = "<group>"; };
@@ -1293,19 +1295,19 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FA61510D1894B81500F2D4E9 /* Config.h */,
+				FA213EFC189502DC00E4D410 /* Config.h */,
+				FA213EFD189502DC00E4D410 /* GamePhysicsContactListener.cpp */,
+				FA213EFE189502DC00E4D410 /* GamePhysicsContactListener.h */,
+				FA213EFF189502DC00E4D410 /* GLES-Render.cpp */,
+				FA213F00189502DC00E4D410 /* GLES-Render.h */,
+				FA213F01189502DC00E4D410 /* TitleScene.cpp */,
+				FA213F02189502DC00E4D410 /* TitleScene.h */,
 				FAA46F5B188BB78200162EE7 /* Block.cpp */,
 				FAA46F5C188BB78200162EE7 /* Block.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
-				FA55A2731894EB5A002FC3FA /* titleScene.cpp */,
-				FA55A2741894EB5A002FC3FA /* titleScene.h */,
-				FA55A27A1894F64A002FC3FA /* GLES-Render.cpp */,
-				FA55A27B1894F64A002FC3FA /* GLES-Render.h */,
 				FA3A010E1883E59100630A01 /* GameScene.cpp */,
 				FA3A010F1883E59100630A01 /* GameScene.h */,
-				FA55A2701894EB4A002FC3FA /* GamePhysicsContactListener.cpp */,
-				FA55A2711894EB4A002FC3FA /* GamePhysicsContactListener.h */,
 				FAA46F5E188BB7B800162EE7 /* Ball.cpp */,
 				FAA46F5F188BB7B800162EE7 /* Ball.h */,
 				FAA46F61188BB7E100162EE7 /* Slider.cpp */,
@@ -1755,7 +1757,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FA6151101894D63600F2D4E9 /* block */,
+				FA213F061895034000E4D410 /* block */,
+				FA213F071895034000E4D410 /* breakout-set */,
 				FA6151061894B1F100F2D4E9 /* slider.png */,
 				FAF54816189499B100AA306F /* L */,
 				FAF54817189499B100AA306F /* M */,
@@ -1865,7 +1868,8 @@
 				FAF5481A189499B100AA306F /* M in Resources */,
 				FAF5481B189499B100AA306F /* S in Resources */,
 				FA6151071894B1F100F2D4E9 /* slider.png in Resources */,
-				FA6151111894D63600F2D4E9 /* block in Resources */,
+				FA213F081895034000E4D410 /* block in Resources */,
+				FA213F091895034000E4D410 /* breakout-set in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2091,9 +2095,9 @@
 				FAA46F5D188BB78200162EE7 /* Block.cpp in Sources */,
 				FAA46F60188BB7B800162EE7 /* Ball.cpp in Sources */,
 				FAA46F63188BB7E100162EE7 /* Slider.cpp in Sources */,
-				FA55A2721894EB4A002FC3FA /* GamePhysicsContactListener.cpp in Sources */,
-				FA55A2751894EB5A002FC3FA /* titleScene.cpp in Sources */,
-				FA55A27C1894F64B002FC3FA /* GLES-Render.cpp in Sources */,
+				FA213F03189502DC00E4D410 /* GamePhysicsContactListener.cpp in Sources */,
+				FA213F04189502DC00E4D410 /* GLES-Render.cpp in Sources */,
+				FA213F05189502DC00E4D410 /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

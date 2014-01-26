@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "GameScene.h"
+#include "AppMacros.h"
 
 USING_NS_CC;
 
@@ -17,6 +18,38 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
+    
+    
+    // デザインサイズの設定
+    pEGLView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionExactFit);
+    
+    CCSize frameSize = pEGLView->getFrameSize();
+    
+    std::vector<std::string> searchPath;
+    
+    if (frameSize.height > mediumResource.size.height)
+    {
+        // 「L」ディレクトリのリソースを使用
+        searchPath.push_back(largeResource.directory);
+        pDirector->setContentScaleFactor(MIN(largeResource.size.height / designResolutionSize.height, largeResource.size.width / designResolutionSize.width));
+    }
+    else if (frameSize.height > smallResource.size.height)
+    {
+        // 「M」ディレクトリのリソースを使用
+        searchPath.push_back(mediumResource.directory);
+        pDirector->setContentScaleFactor(MIN(mediumResource.size.height / designResolutionSize.height, mediumResource.size.width / designResolutionSize.width));
+    }
+    else
+    {
+        // 「S」ディレクトリのリソースを使用
+        searchPath.push_back(smallResource.directory);
+        pDirector->setContentScaleFactor(MIN(smallResource.size.height / designResolutionSize.height, smallResource.size.width / designResolutionSize.width));
+    }
+    
+    searchPath.push_back("images");
+    
+    // リソースディレクトリを指定
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 	
     // turn on display FPS
     pDirector->setDisplayStats(true);
@@ -24,11 +57,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
     
-    // リソースの検索パスをセット
-    std::vector<std::string> searchPath;
-    searchPath.push_back("images");
-    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
-
     // create a scene. it's an autorelease object
     CCScene *pScene = GameScene::scene();
     // run

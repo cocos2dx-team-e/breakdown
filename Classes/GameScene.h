@@ -9,6 +9,7 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 
 class Ball;
+class Slider;
 
 
 class GameScene : public cocos2d::CCLayer
@@ -30,12 +31,16 @@ public:
     CREATE_FUNC(GameScene);
     
     virtual void update(float delta);
+    virtual void draw();
     
     //
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     
     //スライダー用
     virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+
+    //
+    virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     
     // Singleton
     static GameScene* sharedGameScene();

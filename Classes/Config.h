@@ -4,4 +4,14 @@
 // Pixel To Meter : nピクセルが1メートルという意味
 #define PTM_RATIO 100
 
+
+
+enum {
+    NODE_TAG = 1000,
+
+    NODE_TAG_BALL,
+    NODE_TAG_BLOCK,
+    NODE_TAG_SLIDER,
+};
+
 #endif

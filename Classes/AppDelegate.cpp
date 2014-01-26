@@ -46,7 +46,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
         searchPath.push_back(smallResource.directory);
         pDirector->setContentScaleFactor(MIN(smallResource.size.height / designResolutionSize.height, smallResource.size.width / designResolutionSize.width));
     }
-    
+
+    // 要マルチレゾリューション対応
+    searchPath.push_back("block");
     searchPath.push_back("images");
     
     // リソースディレクトリを指定

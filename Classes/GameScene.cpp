@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "Config.h"
 #include "Ball.h"
+#include "Block.h"
 #include "SimpleAudioEngine.h"
 #include "GamePhysicsContactListener.h"
 
@@ -85,6 +86,14 @@ bool GameScene::init()
     mpBall = Ball::create();
     mpBall->attach( player, ccp(0, 16) );
     addChild(mpBall);
+
+    Block* pBlock = Block::create();
+    pBlock->setLife(3);
+    pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width * 0.5));
+    addChild(pBlock);
+
+    //スライダー生成
+    createSlider();
 
 #if 0 // テスト用にボールを沢山だせます
     for( int lp = 0; lp < 20; ++lp ){

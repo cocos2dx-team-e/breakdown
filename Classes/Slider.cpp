@@ -37,6 +37,10 @@ bool Slider::init()
         shapeDef.friction = 0.1f;
         shapeDef.restitution = 1.01f;
         pBody->CreateFixture(&shapeDef);
+
+        // 自信にタグをセットして、衝突リスナーから判別できるようにする
+        this->setTag(NODE_TAG_SLIDER);
+        pBody->SetUserData( this );
     }
     setB2Body(pBody);
     setPTMRatio(PTM_RATIO);

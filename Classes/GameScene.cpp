@@ -21,17 +21,30 @@ CCScene* GameScene::scene()
 
 GameScene* GameScene::sharedGameScene()
 {
-    static GameScene* pInstance;
-    if( pInstance == NULL ){
-        pInstance = new GameScene();
-        pInstance->init();
+    if( mpSharedInstance == NULL ){
+        mpSharedInstance = new GameScene();
+        mpSharedInstance->init();
+        mpSharedInstance->autorelease();
     }
-    return pInstance;
+    return mpSharedInstance;
+}
+
+GameScene* GameScene::mpSharedInstance;
+
+GameScene::GameScene()
+: mpB2World(NULL)
+{
+    CCLOG("[%s]", __FUNCTION__);
+    CC_ASSERT(mpSharedInstance == NULL);
+    mpSharedInstance = this;
 }
 
 GameScene::~GameScene()
 {
-    CCLOG("");
+    CCLOG("[%s]", __FUNCTION__);
+    mpSharedInstance = NULL;
+
+    delete mpB2World;
 }
 
 bool GameScene::init()
@@ -154,7 +167,7 @@ void GameScene::onEnter()
 
     // 再配置処理？
     CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
-    mpBall->attach( player, ccp(0, 16) );
+    mpBall->attach( player, ccp(0, 32) );
 
     scheduleUpdate();
 }
@@ -173,13 +186,7 @@ float GameScene::getPTMRatio() const
 
 bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
-    const CCPoint location =pTouch->getLocation();
-
-    // 仮
-    CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
-    if( player->boundingBox().containsPoint( location ) ){
-        mpBall->attach( player, ccp(0, 16) );
-    }
+    //const CCPoint location =pTouch->getLocation();
 
     return true;
 }
@@ -205,9 +212,11 @@ void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     const CCPoint location =pTouch->getLocation();
 
     // スライダーの位置でタップを離したら、発射!!
-    CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
-    if( player->boundingBox().containsPoint( location ) ){
-        mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1() * 1.0f + 2.0f ) );
+    if( mpBall->getState() == Ball::kState_Attach ){
+//        CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
+//        if( player->boundingBox().containsPoint( location ) ){
+            mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1() * 1.0f + 2.0f ) );
+//        }
     }
 }
 

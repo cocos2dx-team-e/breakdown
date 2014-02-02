@@ -1,8 +1,10 @@
 #ifndef breakdown_Config_h
 #define breakdown_Config_h
 
+#include "cocos-ext.h"
+
 // Pixel To Meter : nピクセルが1メートルという意味
-#define PTM_RATIO 100
+#define PTM_RATIO 200
 
 #define BLOCK_SCALE 4.0f
 #define SLIDER_SCALE 0.4f

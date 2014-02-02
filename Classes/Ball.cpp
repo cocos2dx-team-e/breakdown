@@ -1,5 +1,6 @@
 #include "Ball.h"
 #include "Block.h"
+#include "Slider.h"
 #include "GameScene.h"
 
 Ball::Ball()
@@ -15,7 +16,7 @@ Ball::~Ball()
 
 
     //
-    GameScene::sharedGameScene()->getB2World()->DestroyBody( mpPhysicsSprite->getB2Body() );
+    //GameScene::sharedGameScene()->getB2World()->DestroyBody( mpPhysicsSprite->getB2Body() );
 }
 
 bool Ball::init()
@@ -24,9 +25,11 @@ bool Ball::init()
         return false;
 
     mState = kState_Unknown;
+    mNextForce.SetZero();
 
     // 物理スプライトを初期化
     mpPhysicsSprite = CCPhysicsSprite::createWithTexture( CCTextureCache::sharedTextureCache()->addImage("ball01.png") );
+    mpPhysicsSprite->setScale(2.0f);
     {
         // 物理情報を定義
         b2BodyDef bodyDef;
@@ -34,7 +37,7 @@ bool Ball::init()
         b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody( &bodyDef );
         {// 円の物理情報を登録する
             b2CircleShape shape;
-            shape.m_radius = 16.0f / GameScene::sharedGameScene()->getPTMRatio();
+            shape.m_radius = mpPhysicsSprite->getContentSize().width * 0.5f / GameScene::sharedGameScene()->getPTMRatio() * mpPhysicsSprite->getScale();
 
             b2FixtureDef shapeDef;
             shapeDef.shape = &shape;
@@ -104,6 +107,11 @@ void Ball::update(float delta)
             mpPhysicsSprite->getB2Body()->SetActive( false );
             //
             GameScene::sharedGameScene()->transitionScene( GameScene::TRANSITON_CODE_GAMEOVER );
+        }else{
+            if( mNextForce.LengthSquared() != 0 ){
+                mpPhysicsSprite->getB2Body()->ApplyForceToCenter( mNextForce );
+                mNextForce.SetZero();
+            }
         }
     }
 
@@ -142,6 +150,19 @@ void Ball::contactWith(CCNode* target)
         block->hit();
     }
     else if( target->getTag() == NODE_TAG_SLIDER ){
+        Slider* slider = (Slider*)target;
+        b2Vec2 v0( mpPhysicsSprite->getPositionX(), mpPhysicsSprite->getPositionY() );
+        b2Vec2 v1( slider->getPositionX(), slider->getPositionY() );
+        //CCLOG("v0 %.1f %.1f", v0.x, v0.y);
+        //CCLOG("v1 %.1f %.1f", v1.x, v1.y);
+        // 力学を適用する
+        b2Vec2 power( v0 - v1 );
+        power.Normalize();
+        power *= 0.3f;
+        //power.x = power.x / ( slider->getContentSize().width * 0.5f ) * 5;
+        //power.y = 0.0f;
+        printf("%f\n",power.x);
+        mNextForce = power;
     }
 }
 

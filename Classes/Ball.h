@@ -43,11 +43,15 @@ public:
     /// 指定の場所へ向かって発射する
     virtual void fire(const CCPoint& power);
 
-    ///
+    /// 衝突検知時の処理
     virtual void contactWith(CCNode* target);
+
+    /// 状態を取得します
+    virtual int getState() const { return mState; }
 
 private:
     int         mState;
+    b2Vec2      mNextForce;
     
     ///
     CCNode* mpAttachingTarget;

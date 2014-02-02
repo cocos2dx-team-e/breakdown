@@ -25,6 +25,7 @@ public:
 
     virtual bool init();
     virtual ~GameScene();
+    GameScene();
 
     void generateBlocks();
 
@@ -33,6 +34,9 @@ public:
 
     static cocos2d::CCScene* scene();
     CREATE_FUNC(GameScene);
+
+    // Singleton
+    static GameScene* sharedGameScene();
     
     virtual void update(float delta);
     virtual void draw();
@@ -47,10 +51,7 @@ public:
 
     //
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-    
-    // Singleton
-    static GameScene* sharedGameScene();
-    
+
     // 物理世界へようこそ
     b2World* getB2World(){ return mpB2World; }
     const b2World* getB2World() const { return mpB2World; }
@@ -70,6 +71,8 @@ private:
     b2World* mpB2World;
     Ball* mpBall;
     int blockCount;
+
+    static GameScene* mpSharedInstance;
 
 protected:
     void playBGM();

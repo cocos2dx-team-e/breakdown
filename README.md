@@ -18,7 +18,7 @@ Cocos2d-xで作るiPhone, Android向けブロック崩し (Breakdown) の開発�
 @Author 石井
 
 - Ball
--- パーティクル
+- Ballにパーティクル
 - GameScene
 - Box2D環境構築
 
@@ -34,10 +34,10 @@ Cocos2d-xで作るiPhone, Android向けブロック崩し (Breakdown) の開発�
 @Author 竹田
 
 - シーン周り
--- TitleScene
--- OverScene
--- EndScene
--- GameScene
+- TitleScene
+- OverScene
+- EndScene
+- GameScene
 
 @Author 峯岸
 

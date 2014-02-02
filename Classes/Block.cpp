@@ -68,6 +68,7 @@ void Block::hit()
     if (this->isDead()) {
         // TODO 死んだときの処理
         CCLog("ブロックの体力が0");
+        explode();
         return;
     }
 

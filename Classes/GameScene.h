@@ -56,7 +56,8 @@ public:
     // Pixel To Meter ?
     float getPTMRatio() const;
 
-    void createSlider();
+    // B2オブジェクトの削除
+    void removeObject(CCNode* pObject, void* body);
     
 private:
     b2World* mpB2World;

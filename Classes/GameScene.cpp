@@ -100,7 +100,7 @@ bool GameScene::init()
     mpBall = Ball::create();
     addChild(mpBall);
 
-    //
+    // ブロック生成
     Block* pBlock = Block::create();
     pBlock->setLife(BLOCK_DEFAULT_LIFE);
     pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width * 0.5));
@@ -232,4 +232,13 @@ void GameScene::transitionScene(int transitionCode)
         CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,TitleScene::scene()));            
     }
    
+}
+
+/*
+ @Author shun-tak
+ */
+void GameScene::removeObject(CCNode* pObject, void* body)
+{
+    pObject->removeFromParentAndCleanup(true);
+    getB2World()->DestroyBody((b2Body*)body);
 }

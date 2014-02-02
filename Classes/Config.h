@@ -13,7 +13,7 @@
 #define BLOCK_ROW_AMOUNT 3 // 縦方向に並ぶブロックの数
 
 #define BLOCK_SCALE 4.0f
-#define SLIDER_SCALE 0.4f
+#define SLIDER_SCALE 0.75f
 
 #define BLOCK_DEFAULT_LIFE 3
 

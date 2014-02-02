@@ -105,6 +105,7 @@ bool Block::isDead()
  */
 void Block::playDamageSound()
 {
+    SimpleAudioEngine::sharedEngine()->playEffect("hit.wav");
 }
 
 /*

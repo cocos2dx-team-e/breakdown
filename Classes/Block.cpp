@@ -4,6 +4,9 @@
 #include "Config.h"
 #include "Block.h"
 #include "GameScene.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 Block::Block()
 {
@@ -33,9 +36,9 @@ bool Block::init()
 
     b2FixtureDef shapeDef;
     shapeDef.shape = &shape;
-    shapeDef.density = 1.0f;
-    shapeDef.friction = 0.0f;
-    shapeDef.restitution = 1.0f;
+    shapeDef.density = BLOCK_DENSITY;
+    shapeDef.friction = BLOCK_FRICTION;
+    shapeDef.restitution = BLOCK_RESTITUTION;
     pBody->CreateFixture(&shapeDef);
 
     // 自信にタグをセットして、衝突リスナーから判別できるようにする
@@ -75,6 +78,8 @@ void Block::hit()
         return;
     }
 
+    playDamageSound();
+
     // Spriteの画像をlife残量に応じて変更する
     CCTexture2D* pTexture;
     if(life == 1) {
@@ -95,10 +100,26 @@ bool Block::isDead()
     return false;
 }
 
+/*
+ @Author Minegishi
+ */
+void Block::playDamageSound()
+{
+    SimpleAudioEngine::sharedEngine()->playEffect("hit.wav");
+}
+
+/*
+ @Author Minegishi
+ */
+void Block::playDeadSound()
+{
+    SimpleAudioEngine::sharedEngine()->playEffect("destroy.wav");
+}
+
 void Block::explode()
 {
     // 爆発エフェクトを表示する
     CCLog("爆発エフェクトを表示する");
     // 効果音を出す
-    CCLog("効果音を出す");
+    playDeadSound();
 }

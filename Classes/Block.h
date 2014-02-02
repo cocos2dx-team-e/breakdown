@@ -16,6 +16,8 @@ class Block
 {
     int life; // ブロックの体力
     b2BodyDef bodyDef; // 物理エンジン上の物質の定義
+    void playDamageSound(); // ダメージ受けたときのサウンド
+    void playDeadSound(); // 死んだときのサウンド
 
 public:
     Block();

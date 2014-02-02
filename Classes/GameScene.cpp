@@ -85,9 +85,9 @@ bool GameScene::init()
             b2EdgeShape groundBox;
             b2FixtureDef fixtureDef;
             fixtureDef.shape = &groundBox;
-            fixtureDef.density = 1.0f;
-            fixtureDef.friction = 0.0f;
-            fixtureDef.restitution = 1.0f;
+            fixtureDef.density = WALL_DENSITY;
+            fixtureDef.friction = WALL_FRICTION;
+            fixtureDef.restitution = WALL_RESTITUTION;
             // bottom
 //            groundBox.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( size.width, 0.0f ) );
 //            pGroundBody->CreateFixture( &groundBox, 0 );
@@ -202,6 +202,10 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     return true;
 }
 
+/*
+ @Author minegishi
+ BGM再生
+ */
 void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
 
     //タップポイント取得
@@ -226,7 +230,7 @@ void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     if( mpBall->getState() == Ball::kState_Attach ){
 //        CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
 //        if( player->boundingBox().containsPoint( location ) ){
-            mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1() * 1.0f + 2.0f ) );
+            mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, 2.5f ) );
 //        }
     }
 }

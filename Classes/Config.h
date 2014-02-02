@@ -17,6 +17,24 @@
 
 #define BLOCK_DEFAULT_LIFE 3
 
+// ボールの物理定数
+#define BALL_DENSITY 0.1f
+#define BALL_FRICTION 0.1f
+#define BALL_RESTITUTION 1.0f
+
+#define BLOCK_DENSITY 1.0f
+#define BLOCK_FRICTION 0.0f
+#define BLOCK_RESTITUTION 1.0f
+
+#define SLIDER_DENSITY 1.0f
+#define SLIDER_FRICTION 0.1f
+#define SLIDER_RESTITUTION 1.01f
+
+#define WALL_DENSITY 1.0f
+#define WALL_FRICTION 0.0f
+#define WALL_RESTITUTION 1.0f
+
+// タグ
 enum {
     NODE_TAG = 1000,
 

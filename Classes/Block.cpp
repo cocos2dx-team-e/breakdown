@@ -78,6 +78,8 @@ void Block::hit()
         return;
     }
 
+    playDamageSound();
+
     // Spriteの画像をlife残量に応じて変更する
     CCTexture2D* pTexture;
     if(life == 1) {
@@ -104,11 +106,25 @@ void Block::setSound()
     SimpleAudioEngine::sharedEngine()->preloadEffect("destroy.wav");
 };
 
+/*
+ @Author Minegishi
+ */
+void Block::playDamageSound()
+{
+}
+
+/*
+ @Author Minegishi
+ */
+void Block::playDeadSound()
+{
+    SimpleAudioEngine::sharedEngine()->playEffect("destroy.wav");
+}
+
 void Block::explode()
 {
     // 爆発エフェクトを表示する
     CCLog("爆発エフェクトを表示する");
     // 効果音を出す
-    CCLog("効果音を出す");
-    SimpleAudioEngine::sharedEngine()->playEffect("destroy.wav");
+    playDeadSound();
 }

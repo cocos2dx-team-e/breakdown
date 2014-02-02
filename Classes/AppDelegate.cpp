@@ -20,6 +20,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     pDirector->setOpenGLView(pEGLView);
     
+    /*
+     @Author Takeda
+     画像リソースをデバイス解像度ごとに分岐
+     */
     
     // デザインサイズの設定
     pEGLView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionExactFit);

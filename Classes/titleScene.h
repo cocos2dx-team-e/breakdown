@@ -1,3 +1,9 @@
+/*
+ @Author Takeda
+ タイトル画面
+*/
+
+
 #ifndef __breakdown__titleScene__
 #define __breakdown__titleScene__
 

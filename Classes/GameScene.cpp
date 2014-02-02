@@ -213,14 +213,21 @@ void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     }
 }
 
+/*
+ @Author Takeda
+ BGM再生
+*/
 void GameScene::playBGM()
 {
     CCLOG("%s","PlayBGM");
-    //BGMあれば実装
     SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("bgm.mp3");
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic("bgm.mp3", true);
 }
 
+/*
+ @Author Takeda
+ タイトル画面遷移用
+*/
 void GameScene::transitionScene(int transitionCode)
 {
     //GameScene.h enumの定数により遷移

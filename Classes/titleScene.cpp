@@ -1,3 +1,8 @@
+/*
+ @Author Takeda
+ タイトル画面
+*/
+
 #include "TitleScene.h"
 #include "GameScene.h"
 #include "SimpleAudioEngine.h"

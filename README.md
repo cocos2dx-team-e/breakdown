@@ -4,12 +4,21 @@ breakdown
 Cocos2d-xで作るiPhone, Android向けブロック崩し (Breakdown) の開発リポジトリです。
 
 
+将来の機能
+----------
+
+- ボールの残機表示
+- スコア
+- 新しいステージ
+
+
 開発者
 ------
 
 @Author 石井
 
 - Ball
+-- パーティクル
 - GameScene
 - Box2D環境構築
 
@@ -17,15 +26,18 @@ Cocos2d-xで作るiPhone, Android向けブロック崩し (Breakdown) の開発�
 
 - Block
 - Slider
+- BallとBlockの生死ロジック
 - Config
 - GameScene
+- Gitのアドバイス
 
 @Author 竹田
 
-- TitleScene
-- OverScene
-- EndScene
-- GameScene
+- シーン周り
+-- TitleScene
+-- OverScene
+-- EndScene
+-- GameScene
 
 @Author 峯岸
 

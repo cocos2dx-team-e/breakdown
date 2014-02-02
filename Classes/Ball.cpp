@@ -26,7 +26,7 @@ bool Ball::init()
     mState = kState_Unknown;
 
     // 物理スプライトを初期化
-    mpPhysicsSprite = CCPhysicsSprite::createWithTexture( CCTextureCache::sharedTextureCache()->addImage("ball01.jpg") );
+    mpPhysicsSprite = CCPhysicsSprite::createWithTexture( CCTextureCache::sharedTextureCache()->addImage("ball01.png") );
     {
         // 物理情報を定義
         b2BodyDef bodyDef;

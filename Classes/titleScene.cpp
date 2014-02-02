@@ -1,7 +1,10 @@
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "SimpleAudioEngine.h"
+
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 CCScene* TitleScene::scene()
 {
@@ -47,10 +50,20 @@ bool TitleScene::init(){
     topMenu->setPosition(ccp(winSize.width * 0.5, winSize.height * 0.4));
     this->addChild(topMenu);
 
+    this->playBGM();
+
     return true;
 };
 
 void TitleScene::startTapped()
 {
     CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,GameScene::scene()));
+};
+
+void TitleScene::playBGM()
+{
+    CCLOG("%s","PlayBGM");
+    //BGMあれば実装
+    SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("bgm.mp3");
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("bgm.mp3", true);
 };

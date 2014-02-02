@@ -7,6 +7,9 @@
 // Pixel To Meter : nピクセルが1メートルという意味
 #define PTM_RATIO 100
 
+#define BLOCK_COLUMN_AMOUNT 4 // 横方向に並ぶブロックの数
+#define BLOCK_ROW_AMOUNT 3 // 縦方向に並ぶブロックの数
+
 #define BLOCK_SCALE 4.0f
 #define SLIDER_SCALE 0.4f
 

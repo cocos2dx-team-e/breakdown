@@ -58,6 +58,9 @@ public:
 
     // B2オブジェクトの削除
     void removeObject(CCNode* pObject, void* body);
+
+    // 死んだブロックをまとめて削除
+    void sweepDeadBlocks();
     
 private:
     b2World* mpB2World;

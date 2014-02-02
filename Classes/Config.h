@@ -15,6 +15,7 @@ enum {
     NODE_TAG_BALL,
     NODE_TAG_BLOCK,
     NODE_TAG_SLIDER,
+    NODE_TAG_DEAD_BLOCK,
 };
 
 #endif

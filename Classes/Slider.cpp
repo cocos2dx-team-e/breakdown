@@ -35,7 +35,7 @@ bool Slider::init()
         shapeDef.shape = &shape;
         shapeDef.density = 1.0f;
         shapeDef.friction = 0.1f;
-        shapeDef.restitution = 0.95f;
+        shapeDef.restitution = 1.01f;
         pBody->CreateFixture(&shapeDef);
     }
     setB2Body(pBody);

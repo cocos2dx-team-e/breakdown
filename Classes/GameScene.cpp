@@ -66,20 +66,25 @@ bool GameScene::init()
             CCSize size = CCDirector::sharedDirector()->getVisibleSize();
             size.width /= getPTMRatio();
             size.height /= getPTMRatio();
-            
+
             b2EdgeShape groundBox;
+            b2FixtureDef fixtureDef;
+            fixtureDef.shape = &groundBox;
+            fixtureDef.density = 1.0f;
+            fixtureDef.friction = 0.0f;
+            fixtureDef.restitution = 1.0f;
             // bottom
 //            groundBox.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( size.width, 0.0f ) );
 //            pGroundBody->CreateFixture( &groundBox, 0 );
             // top
             groundBox.Set( b2Vec2( 0.0f, size.height ), b2Vec2( size.width, size.height ) );
-            pGroundBody->CreateFixture( &groundBox, 0 );
+            pGroundBody->CreateFixture(&fixtureDef);
             // left
             groundBox.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( 0.0f, size.height ) );
-            pGroundBody->CreateFixture( &groundBox, 0 );
+            pGroundBody->CreateFixture(&fixtureDef);
             // right
             groundBox.Set( b2Vec2( size.width, 0.0f ), b2Vec2( size.width, size.height ) );
-            pGroundBody->CreateFixture( &groundBox, 0 );
+            pGroundBody->CreateFixture(&fixtureDef);
         }
 
         // 衝突イベントのリスナーを登録する

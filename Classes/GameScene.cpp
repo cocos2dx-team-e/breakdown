@@ -46,7 +46,7 @@ bool GameScene::init()
 
     // 背景表示
     CCSize size = CCDirector::sharedDirector()->getWinSize();
-    CCSprite* pBG = CCSprite::create("background.png");
+    CCSprite* pBG = CCSprite::create("background.jpg");
     pBG->setPosition(ccp(size.width * 0.5, size.height * 0.5));
     this->addChild(pBG);
 

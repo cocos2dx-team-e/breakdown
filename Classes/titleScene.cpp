@@ -25,8 +25,16 @@ bool TitleScene::init(){
         return false;
     }
 
+
+    // 背景表示
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    CCSprite* pBG = CCSprite::create("background.jpg");
+    pBG->setPosition(ccp(size.width * 0.5, size.height * 0.5));
+    this->addChild(pBG);
+
     // 画面サイズを取得
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
 
     /* ラベルを作成 */
     CCString* numberString1 = CCString::createWithFormat("%s", "BREAKDOWN");
@@ -55,6 +63,7 @@ bool TitleScene::init(){
     topMenu->setPosition(ccp(winSize.width * 0.5, winSize.height * 0.4));
     this->addChild(topMenu);
 
+    // BGM表示
     this->playBGM();
 
     return true;

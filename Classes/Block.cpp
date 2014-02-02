@@ -100,12 +100,6 @@ bool Block::isDead()
     return false;
 }
 
-void Block::setSound()
-{
-    //BGMあれば実装
-    SimpleAudioEngine::sharedEngine()->preloadEffect("destroy.wav");
-};
-
 /*
  @Author Minegishi
  */

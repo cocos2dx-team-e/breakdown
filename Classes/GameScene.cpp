@@ -224,7 +224,7 @@ void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     if( mpBall->getState() == Ball::kState_Attach ){
 //        CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
 //        if( player->boundingBox().containsPoint( location ) ){
-            mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1() * 1.0f + 2.0f ) );
+            mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, 2.5f ) );
 //        }
     }
 }

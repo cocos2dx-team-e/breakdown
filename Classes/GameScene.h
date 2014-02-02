@@ -9,6 +9,7 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 
 class Ball;
+class Block;
 class Slider;
 
 
@@ -53,7 +54,7 @@ public:
     float getPTMRatio() const;
 
     // B2オブジェクトの削除
-    void removeObject(CCNode* pObject, void* body);
+    void removeBlock(Block* pBlock);
 
     // 死んだブロックをまとめて削除
     void sweepDeadBlocks();

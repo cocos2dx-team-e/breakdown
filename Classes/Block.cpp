@@ -73,10 +73,20 @@ void Block::hit()
 
     if (this->isDead()) {
         CCLog("ブロックの体力が0");
-        this->setTag(NODE_TAG_DEAD_BLOCK);
-        explode();
+        //this->setTag(NODE_TAG_DEAD_BLOCK);
+        scheduleOnce(schedule_selector(Block::explode), 0.0f);
+        //explode();
         return;
     }
+
+    /*{
+        CCParticleExplosion* m_emitter = CCParticleExplosion::create();
+        m_emitter->retain();
+        m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("Icon-57.png") );
+        m_emitter->setAutoRemoveOnFinish(true);
+        m_emitter->setPosition( getPosition() );
+        addChild(m_emitter, 10);
+    }*/
 
     playDamageSound();
 
@@ -118,8 +128,11 @@ void Block::playDeadSound()
 
 void Block::explode()
 {
+    GameScene::sharedGameScene()->removeBlock(this);
+
     // 爆発エフェクトを表示する
     CCLog("爆発エフェクトを表示する");
+    
     // 効果音を出す
     playDeadSound();
 }

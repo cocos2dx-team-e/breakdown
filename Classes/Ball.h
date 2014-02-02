@@ -12,6 +12,7 @@ USING_NS_CC_EXT;
 class Slider;
 
 /**
+ * @author Y.Ishii
  * 移動しながらステージの壁＆ブロックと反射する
  */
 class Ball

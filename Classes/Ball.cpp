@@ -3,6 +3,9 @@
 #include "Slider.h"
 #include "GameScene.h"
 
+/*
+ * @author Y.Ishii
+ */
 Ball::Ball()
 : mpParticle(NULL)
 , mpAttachingTarget(NULL)

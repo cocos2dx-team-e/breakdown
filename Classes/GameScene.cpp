@@ -14,6 +14,10 @@ using namespace cocos2d;
 using namespace std;
 using namespace CocosDenshion;
 
+/**
+ * @author Y.Ishii
+ * ちょっと強引にシングルトン
+ */
 CCScene* GameScene::scene()
 {
     CCScene* scene = CCScene::create();
@@ -47,6 +51,9 @@ GameScene::~GameScene()
     delete mpB2World;
 }
 
+/**
+ *
+ */
 bool GameScene::init()
 {
     if (!CCLayer::init())
@@ -56,6 +63,7 @@ bool GameScene::init()
 
     setTouchMode(kCCTouchesOneByOne);
 	setTouchEnabled(true);
+    blockCount = 0;
 
     // 背景表示
     CCSize size = CCDirector::sharedDirector()->getWinSize();
@@ -165,17 +173,19 @@ void GameScene::draw()
 {
     CCLayer::draw();
 
+#if 0
     ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
     kmGLPushMatrix();
     mpB2World->DrawDebugData();
     kmGLPopMatrix();
+#endif
 }
 
 void GameScene::onEnter()
 {
     CCLayer::onEnter();
 
-    // 再配置処理？
+    // Y.Ishii 再配置処理
     CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
     mpBall->attach( player, ccp(0, 32) );
 
@@ -223,14 +233,11 @@ void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
 
 void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
-    const CCPoint location =pTouch->getLocation();
+//    const CCPoint location =pTouch->getLocation();
 
     // スライダーの位置でタップを離したら、発射!!
     if( mpBall->getState() == Ball::kState_Attach ){
-//        CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
-//        if( player->boundingBox().containsPoint( location ) ){
-            mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, 2.5f ) );
-//        }
+        mpBall->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, 3.0f ) );
     }
 }
 
@@ -269,10 +276,13 @@ void GameScene::transitionScene(int transitionCode)
 /*
  @Author shun-tak
  */
-void GameScene::removeObject(CCNode* pObject, void* body)
+void GameScene::removeBlock(Block* pBlock)
 {
-    pObject->removeFromParentAndCleanup(true);
-    getB2World()->DestroyBody((b2Body*)body);
+    pBlock->getB2Body()->SetActive(false);
+    pBlock->setVisible(false);
+//    pBlock->removeFromParentAndCleanup(true);
+//    getB2World()->DestroyBody( pBlock->getB2Body() );
+    --blockCount;
 }
 
 /*
@@ -280,15 +290,4 @@ void GameScene::removeObject(CCNode* pObject, void* body)
  */
 void GameScene::sweepDeadBlocks()
 {
-    // world内の全オブジェクトをループする
-    for (b2Body* b = getB2World()->GetBodyList(); b; b = b->GetNext())
-    {
-        if (b->GetUserData()) {
-            CCNode* ccNode = (CCNode*)b->GetUserData();
-            if (ccNode->getTag() == NODE_TAG_DEAD_BLOCK) {
-                removeObject(ccNode, (void*)b);
-                blockCount--;
-            }
-        }
-    }
 }

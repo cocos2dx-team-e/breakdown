@@ -27,7 +27,9 @@ enum {
     // ゲームオーバー
     TRANSITON_CODE_GAMEOVER,
     // クリア
-    TRANSITON_CODE_CLEAR
+    TRANSITON_CODE_CLEAR,
+    // 現在のEnd結果
+    TRANSITON_CODE
 };
 
 #endif

@@ -1,5 +1,7 @@
 #include "GameScene.h"
 #include "TitleScene.h"
+#include "EndScene.h"
+#include "OverScene.h"
 #include "Config.h"
 #include "Ball.h"
 #include "Block.h"
@@ -251,12 +253,12 @@ void GameScene::transitionScene(int transitionCode)
     {
 
         CCLOG("%s","GAMEOVER");
-        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,TitleScene::scene()));
+        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,OverScene::scene()));
     }
     else if(transitionCode == TRANSITON_CODE_CLEAR)
     {
-        CCLOG("%s","CLEAR");
-        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,TitleScene::scene()));            
+        CCLOG("%s","GAME CLEAR");
+        CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,EndScene::scene()));
     }
    
 }

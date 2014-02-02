@@ -15,13 +15,6 @@ class Slider;
 class GameScene : public cocos2d::CCLayer
 {
 public:
-    // 画面遷移時の分岐コード
-    enum {
-        // ゲームオーバー
-        TRANSITON_CODE_GAMEOVER,
-        // クリア
-        TRANSITON_CODE_CLEAR
-    };
 
     virtual bool init();
     virtual ~GameScene();

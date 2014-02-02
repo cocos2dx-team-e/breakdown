@@ -16,6 +16,10 @@ enum {
     NODE_TAG_BLOCK,
     NODE_TAG_SLIDER,
     NODE_TAG_DEAD_BLOCK,
+    // ゲームオーバー
+    TRANSITON_CODE_GAMEOVER,
+    // クリア
+    TRANSITON_CODE_CLEAR
 };
 
 #endif

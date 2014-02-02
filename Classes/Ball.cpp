@@ -150,7 +150,7 @@ void Ball::contactWith(CCNode* target)
         b2Vec2 v0( mpPhysicsSprite->getPositionX(), mpPhysicsSprite->getPositionY() );
         b2Vec2 v1( slider->getPositionX(), slider->getPositionY() );
         // 力学を適用する
-        float angular = mpPhysicsSprite->getB2Body()->GetAngularVelocity() * 1.05f;
+        float angular = mpPhysicsSprite->getB2Body()->GetAngularVelocity() + 0.85f;
         b2Vec2 power1( v0 - v1 );
         b2Vec2 power2( mpPhysicsSprite->getB2Body()->GetLinearVelocity() );
         const float velocity = std::max( MIN_BALL_VELOCITY, std::min( MAX_BALL_VELOCITY, power2.Length() * ADDITIONAL_BALL_POWER ) );

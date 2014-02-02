@@ -113,7 +113,7 @@ bool GameScene::init()
 
     //スライダー生成
     Slider* player = Slider::create();
-    player->setPosition(ccp(size.width*0.5, size.height*0.2));
+    player->setPosition(ccp(size.width*0.5, size.height*SLIDER_POSITION_RATE_Y));
     addChild(player);
 
     // Ballクラスの初期化
@@ -214,7 +214,7 @@ void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
 
     //高さだけ固定
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    touchPoint.y = winSize.height*0.2;
+    touchPoint.y = winSize.height*SLIDER_POSITION_RATE_Y;
 
     CCSprite* player = (CCSprite *)this->getChildByTag(NODE_TAG_SLIDER);
 

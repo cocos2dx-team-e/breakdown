@@ -17,6 +17,9 @@
 
 #define BLOCK_DEFAULT_LIFE 3
 
+// Sliderの高さ
+#define SLIDER_POSITION_RATE_Y 0.1f 
+
 // ボールの物理定数
 #define BALL_DENSITY 0.1f
 #define BALL_FRICTION 0.1f
@@ -34,7 +37,7 @@
 #define WALL_FRICTION 0.0f
 #define WALL_RESTITUTION 1.0f
 
-#define MAX_BALL_VELOCITY 7.5f
+#define MAX_BALL_VELOCITY 7.8f
 #define MIN_BALL_VELOCITY 4.5f
 #define ADDITIONAL_BALL_POWER 1.025f
 

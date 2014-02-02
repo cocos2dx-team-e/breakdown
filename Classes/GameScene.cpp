@@ -24,9 +24,7 @@ CCScene* GameScene::scene()
 GameScene* GameScene::sharedGameScene()
 {
     if( mpSharedInstance == NULL ){
-        mpSharedInstance = new GameScene();
-        mpSharedInstance->init();
-        mpSharedInstance->autorelease();
+        mpSharedInstance = GameScene::create();
     }
     return mpSharedInstance;
 }

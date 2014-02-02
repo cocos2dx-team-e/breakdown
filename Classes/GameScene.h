@@ -26,6 +26,8 @@ public:
     virtual bool init();
     virtual ~GameScene();
 
+    void generateBlocks();
+
     // ゲーム終了
     void transitionScene(int transitionCode);
 
@@ -61,12 +63,13 @@ public:
 
     // 死んだブロックをまとめて削除
     void sweepDeadBlocks();
+
+    bool isBlockLeft() { return blockCount > 0 ? true : false; }
     
 private:
     b2World* mpB2World;
-    
-    //
     Ball* mpBall;
+    int blockCount;
 
 protected:
     void playBGM();

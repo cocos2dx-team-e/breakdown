@@ -106,24 +106,21 @@ bool GameScene::init()
     addChild(mpBall);
 
     // ブロック生成
-    Block* pBlock = Block::create();
-    pBlock->setLife(BLOCK_DEFAULT_LIFE);
-    pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width * 0.5));
-    addChild(pBlock);
-
-#if 0 // テスト用にボールを沢山だせます
-    for( int lp = 0; lp < 20; ++lp ){
-        Ball* p = Ball::create();
-        p->fire( ccp( (CCRANDOM_0_1()-0.5f)*3, CCRANDOM_0_1()*5 + 2.0f ) );
-        addChild(p);
-    }
-#endif
-
-    // TitleSceneで再生済みのため実行しない。
-    // this->playBGM();
+    generateBlocks();
 
     CCLog("%s","breakdown App initialized.");
     return true;
+}
+
+void GameScene::generateBlocks()
+{
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+
+    Block* pBlock = Block::create();
+    pBlock->setLife(BLOCK_DEFAULT_LIFE);
+    pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width));
+    addChild(pBlock);
+    blockCount++;
 }
 
 void GameScene::update(float delta)
@@ -134,6 +131,11 @@ void GameScene::update(float delta)
 
     // 死んだブロックの削除
     sweepDeadBlocks();
+
+    // ゲームクリア判定
+    if (!isBlockLeft()) {
+        transitionScene(TRANSITON_CODE_CLEAR);
+    }
 }
 
 void GameScene::draw()
@@ -262,6 +264,7 @@ void GameScene::sweepDeadBlocks()
             CCNode* ccNode = (CCNode*)b->GetUserData();
             if (ccNode->getTag() == NODE_TAG_DEAD_BLOCK) {
                 removeObject(ccNode, (void*)b);
+                blockCount--;
             }
         }
     }

@@ -112,6 +112,9 @@ bool GameScene::init()
     return true;
 }
 
+/*
+ @Author shun-tak
+ */
 void GameScene::generateBlocks()
 {
     CCSize size = CCDirector::sharedDirector()->getWinSize();

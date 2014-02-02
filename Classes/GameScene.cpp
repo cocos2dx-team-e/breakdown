@@ -133,11 +133,12 @@ void GameScene::generateBlocks()
     CCSize size = CCDirector::sharedDirector()->getWinSize();
 
     for (float row = 0.5; row < BLOCK_ROW_AMOUNT; row += 1.0) {
-        for (float rate = 0.5; rate < BLOCK_COLUMN_AMOUNT; rate += 1.0) {
+        int life = BLOCK_DEFAULT_LIFE - static_cast<int>(row);
+        for (float column = 0.5; column < BLOCK_COLUMN_AMOUNT; column += 1.0) {
             Block* pBlock = Block::create();
             CCSize blockSize = pBlock->getContentSize();
-            pBlock->setLife(BLOCK_DEFAULT_LIFE);
-            pBlock->setSpriteAndB2Position(ccp(blockSize.width * BLOCK_SCALE * rate,
+            pBlock->setLife(life);
+            pBlock->setSpriteAndB2Position(ccp(blockSize.width * BLOCK_SCALE * column,
                                                size.height - blockSize.height * BLOCK_SCALE * row));
             addChild(pBlock);
             blockCount++;

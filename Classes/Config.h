@@ -34,6 +34,10 @@
 #define WALL_FRICTION 0.0f
 #define WALL_RESTITUTION 1.0f
 
+#define MAX_BALL_VELOCITY 7.5f
+#define MIN_BALL_VELOCITY 4.5f
+#define ADDITIONAL_BALL_POWER 1.025f
+
 // タグ
 enum {
     NODE_TAG = 1000,

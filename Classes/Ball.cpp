@@ -71,8 +71,8 @@ void Ball::onEnter()
     mpParticle->setAnchorPoint( ccp( 0.5f, 0.5f ) );
     mpParticle->setPosVar( ccp( 16.0f, 16.0f ) );
     mpParticle->setStartSize( 42.0f );
-    mpParticle->setEndSize( 42.0f );
-    mpParticle->setEmissionRate( 80.0f );
+    mpParticle->setEndSize( 48.0f );
+    mpParticle->setEmissionRate( 120.0f );
     mpParticle->setLife( 1.0f );
     mpParticle->setLifeVar( 0.1f );
     //    mpParticle->setTotalParticles( 300 );
@@ -108,10 +108,6 @@ void Ball::update(float delta)
             //
             GameScene::sharedGameScene()->transitionScene(TRANSITON_CODE_GAMEOVER );
         }else{
-            if( mNextForce.LengthSquared() != 0 ){
-                mpPhysicsSprite->getB2Body()->ApplyForceToCenter( mNextForce );
-                mNextForce.SetZero();
-            }
         }
     }
 
@@ -153,16 +149,21 @@ void Ball::contactWith(CCNode* target)
         Slider* slider = (Slider*)target;
         b2Vec2 v0( mpPhysicsSprite->getPositionX(), mpPhysicsSprite->getPositionY() );
         b2Vec2 v1( slider->getPositionX(), slider->getPositionY() );
-        //CCLOG("v0 %.1f %.1f", v0.x, v0.y);
-        //CCLOG("v1 %.1f %.1f", v1.x, v1.y);
         // 力学を適用する
-        b2Vec2 power( v0 - v1 );
-        power.Normalize();
-        power *= 0.02f;
-        //power.x = power.x / ( slider->getContentSize().width * 0.5f ) * 5;
-        //power.y = 0.0f;
-        printf("%f\n",power.x);
-        mNextForce = power;
+        float angular = mpPhysicsSprite->getB2Body()->GetAngularVelocity() * 1.05f;
+        b2Vec2 power1( v0 - v1 );
+        b2Vec2 power2( mpPhysicsSprite->getB2Body()->GetLinearVelocity() );
+        const float velocity = std::max( MIN_BALL_VELOCITY, std::min( MAX_BALL_VELOCITY, power2.Length() * ADDITIONAL_BALL_POWER ) );
+        power1.y = fabsf(power1.y);
+        power2.y = fabsf(power2.y);
+        power1.Normalize();
+        power2.Normalize();
+        b2Vec2 force( power1 + power2 );
+        force.Normalize();
+        force *= velocity;
+        CCLOG("POWER %.1f", force.Length());
+        mpPhysicsSprite->getB2Body()->SetLinearVelocity( force );
+        mpPhysicsSprite->getB2Body()->SetAngularVelocity( angular );
     }
 }
 

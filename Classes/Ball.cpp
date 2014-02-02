@@ -41,9 +41,9 @@ bool Ball::init()
 
             b2FixtureDef shapeDef;
             shapeDef.shape = &shape;
-            shapeDef.density = 0.1f;
-            shapeDef.friction = 0.1f;
-            shapeDef.restitution = 1.0f;
+            shapeDef.density = BALL_DENSITY;
+            shapeDef.friction = BALL_FRICTION;
+            shapeDef.restitution = BALL_RESTITUTION;
             pBody->CreateFixture( &shapeDef );
         }
         // SpriteとPhysicaを関連付ける

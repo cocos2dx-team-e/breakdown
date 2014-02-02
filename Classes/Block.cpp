@@ -33,9 +33,9 @@ bool Block::init()
 
     b2FixtureDef shapeDef;
     shapeDef.shape = &shape;
-    shapeDef.density = 1.0f;
-    shapeDef.friction = 0.0f;
-    shapeDef.restitution = 1.0f;
+    shapeDef.density = BLOCK_DENSITY;
+    shapeDef.friction = BLOCK_FRICTION;
+    shapeDef.restitution = BLOCK_RESTITUTION;
     pBody->CreateFixture(&shapeDef);
 
     // 自信にタグをセットして、衝突リスナーから判別できるようにする

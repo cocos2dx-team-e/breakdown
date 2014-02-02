@@ -83,9 +83,9 @@ bool GameScene::init()
             b2EdgeShape groundBox;
             b2FixtureDef fixtureDef;
             fixtureDef.shape = &groundBox;
-            fixtureDef.density = 1.0f;
-            fixtureDef.friction = 0.0f;
-            fixtureDef.restitution = 1.0f;
+            fixtureDef.density = WALL_DENSITY;
+            fixtureDef.friction = WALL_FRICTION;
+            fixtureDef.restitution = WALL_RESTITUTION;
             // bottom
 //            groundBox.Set( b2Vec2( 0.0f, 0.0f ), b2Vec2( size.width, 0.0f ) );
 //            pGroundBody->CreateFixture( &groundBox, 0 );

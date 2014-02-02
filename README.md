@@ -10,6 +10,9 @@ Cocos2d-xで作るiPhone, Android向けブロック崩し (Breakdown) の開発�
 - ボールの残機表示
 - スコア
 - 新しいステージ
+- ブロック破壊エフェクト
+- ボール落としたときの自機爆発エフェクト
+- iPad以外の機種に対応
 
 
 開発者
@@ -32,6 +35,7 @@ Cocos2d-xで作るiPhone, Android向けブロック崩し (Breakdown) の開発�
 - GameScene
 - Gitのアドバイス
 - クラス設計
+- 物理エンジンのチューニング
 - アイテム画像
 
 @Author 竹田

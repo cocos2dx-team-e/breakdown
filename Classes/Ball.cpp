@@ -106,7 +106,7 @@ void Ball::update(float delta)
             // 物理運動を停止する
             mpPhysicsSprite->getB2Body()->SetActive( false );
             //
-            GameScene::sharedGameScene()->transitionScene( GameScene::TRANSITON_CODE_GAMEOVER );
+            GameScene::sharedGameScene()->transitionScene(TRANSITON_CODE_GAMEOVER );
         }else{
             if( mNextForce.LengthSquared() != 0 ){
                 mpPhysicsSprite->getB2Body()->ApplyForceToCenter( mNextForce );

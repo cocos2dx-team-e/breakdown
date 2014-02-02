@@ -158,7 +158,7 @@ void Ball::contactWith(CCNode* target)
         // 力学を適用する
         b2Vec2 power( v0 - v1 );
         power.Normalize();
-        power *= 0.3f;
+        power *= 0.02f;
         //power.x = power.x / ( slider->getContentSize().width * 0.5f ) * 5;
         //power.y = 0.0f;
         printf("%f\n",power.x);

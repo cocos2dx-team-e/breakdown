@@ -1,3 +1,6 @@
+/*
+ @Author shun-tak
+ */
 #ifndef __breakdown__Slider__
 #define __breakdown__Slider__
 

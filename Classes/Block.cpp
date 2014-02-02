@@ -1,3 +1,6 @@
+/*
+ @Author shun-tak
+ */
 #include "Config.h"
 #include "Block.h"
 #include "GameScene.h"
@@ -23,22 +26,22 @@ bool Block::init()
     bodyDef.type = b2_staticBody;
 
     b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody(&bodyDef);
-    {
-        b2PolygonShape shape;
-        shape.SetAsBox(this->getContentSize().width / 2 / PTM_RATIO * BLOCK_SCALE,
-                       this->getContentSize().height / 2 / PTM_RATIO * BLOCK_SCALE);
 
-        b2FixtureDef shapeDef;
-        shapeDef.shape = &shape;
-        shapeDef.density = 1.0f;
-        shapeDef.friction = 0.0f;
-        shapeDef.restitution = 1.0f;
-        pBody->CreateFixture(&shapeDef);
+    b2PolygonShape shape;
+    shape.SetAsBox(this->getContentSize().width / 2 / PTM_RATIO * BLOCK_SCALE,
+                   this->getContentSize().height / 2 / PTM_RATIO * BLOCK_SCALE);
 
-        // 自信にタグをセットして、衝突リスナーから判別できるようにする
-        this->setTag(NODE_TAG_BLOCK);
-        pBody->SetUserData( this );
-    }
+    b2FixtureDef shapeDef;
+    shapeDef.shape = &shape;
+    shapeDef.density = 1.0f;
+    shapeDef.friction = 0.0f;
+    shapeDef.restitution = 1.0f;
+    pBody->CreateFixture(&shapeDef);
+
+    // 自信にタグをセットして、衝突リスナーから判別できるようにする
+    this->setTag(NODE_TAG_BLOCK);
+    pBody->SetUserData( this );
+
     setB2Body(pBody);
     setPTMRatio(PTM_RATIO);
     setScale(BLOCK_SCALE);

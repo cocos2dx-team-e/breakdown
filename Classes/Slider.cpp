@@ -1,3 +1,6 @@
+/*
+ @Author shun-tak
+ */
 #include "Config.h"
 #include "Slider.h"
 #include "GameScene.h"
@@ -26,22 +29,18 @@ bool Slider::init()
     bodyDef.userData = this;
 
     b2Body* pBody = GameScene::sharedGameScene()->getB2World()->CreateBody(&bodyDef);
-    {
-        b2PolygonShape shape;
-        shape.SetAsBox(this->getContentSize().width / 2 / PTM_RATIO * SLIDER_SCALE,
-                       this->getContentSize().height / 2 / PTM_RATIO * SLIDER_SCALE);
 
-        b2FixtureDef shapeDef;
-        shapeDef.shape = &shape;
-        shapeDef.density = 1.0f;
-        shapeDef.friction = 0.1f;
-        shapeDef.restitution = 1.01f;
-        pBody->CreateFixture(&shapeDef);
+    b2PolygonShape shape;
+    shape.SetAsBox(this->getContentSize().width / 2 / PTM_RATIO * SLIDER_SCALE,
+                   this->getContentSize().height / 2 / PTM_RATIO * SLIDER_SCALE);
 
-        // 自信にタグをセットして、衝突リスナーから判別できるようにする
-        this->setTag(NODE_TAG_SLIDER);
-        pBody->SetUserData( this );
-    }
+    b2FixtureDef shapeDef;
+    shapeDef.shape = &shape;
+    shapeDef.density = 1.0f;
+    shapeDef.friction = 0.1f;
+    shapeDef.restitution = 1.01f;
+    pBody->CreateFixture(&shapeDef);
+
     setB2Body(pBody);
     setPTMRatio(PTM_RATIO);
     setScale(SLIDER_SCALE);

@@ -11,5 +11,7 @@ public:
     static cocos2d::CCScene* scene();
     CREATE_FUNC(TitleScene);
 
+protected:
+    void playBGM();
 };
 #endif /* defined(__breakdown__titleScene__) */

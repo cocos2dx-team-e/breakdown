@@ -63,9 +63,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 
     // タイトル画面のロード
-    //CCScene *pScene = TitleScene::scene();
+    CCScene *pScene = TitleScene::scene();
     // ゲーム画面のロード
-    CCScene *pScene = GameScene::scene();
+    //CCScene *pScene = GameScene::scene();
 
     // run
     pDirector->runWithScene( pScene );

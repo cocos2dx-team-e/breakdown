@@ -53,13 +53,22 @@ private:
     int         mState;
     b2Vec2      mNextForce;
     
-    ///
     CCNode* mpAttachingTarget;
     CCPoint mAttachingTargetOffset;
 
-    ///
     CCPhysicsSprite*    mpPhysicsSprite;
     CCParticleSystem*   mpParticle;
+
+    //
+    void reattach();
+
+    /*
+     @Author shun-tak
+     */
+    int life;
+    int getLife() { return life; }
+    void decrLife() { life--; }
+    bool isDead() { return life<=0 ? true : false; }
 };
 
 #endif /* defined(__breakdown__Ball__) */

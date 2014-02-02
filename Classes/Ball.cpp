@@ -56,6 +56,9 @@ bool Ball::init()
     mpPhysicsSprite->setPTMRatio( GameScene::sharedGameScene()->getPTMRatio() );
     addChild(mpPhysicsSprite);
 
+    // ボールの初期ライフを設定
+    this->life = BALL_DEFAULT_LIFE;
+
     return true;
 }
 
@@ -105,8 +108,13 @@ void Ball::update(float delta)
             mState = kState_Unknown;
             // 物理運動を停止する
             mpPhysicsSprite->getB2Body()->SetActive( false );
-            //
-            GameScene::sharedGameScene()->transitionScene(TRANSITON_CODE_GAMEOVER );
+
+            if (this->isDead()) {
+                GameScene::sharedGameScene()->transitionScene(TRANSITON_CODE_GAMEOVER );
+            } else {
+                this->decrLife();
+                this->scheduleOnce(schedule_selector(Ball::reattach), 2);
+            }
         }else{
         }
     }
@@ -125,6 +133,12 @@ void Ball::attach(CCNode* targetObject, const CCPoint& offset)
 
     // 物理運動を停止する
     mpPhysicsSprite->getB2Body()->SetActive( false );
+}
+
+void Ball::reattach()
+{
+    CC_ASSERT(mpAttachingTarget);
+    attach( mpAttachingTarget, mAttachingTargetOffset );
 }
 
 void Ball::fire(const CCPoint& power)

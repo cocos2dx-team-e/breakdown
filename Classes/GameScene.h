@@ -58,6 +58,9 @@ public:
     // 死んだブロックをまとめて削除
     void sweepDeadBlocks();
 
+    /*
+     @Author shun-tak
+     */
     bool isBlockLeft() { return blockCount > 0 ? true : false; }
     
 private:

@@ -156,7 +156,7 @@ void GameScene::update(float delta)
     sweepDeadBlocks();
 
     // ゲームクリア判定
-    if (!isBlockLeft()) {
+    if (isGameClear()) {
         transitionScene(TRANSITON_CODE_CLEAR);
     }
 }

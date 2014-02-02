@@ -61,7 +61,7 @@ public:
     /*
      @Author shun-tak
      */
-    bool isBlockLeft() { return blockCount > 0 ? true : false; }
+    bool isGameClear() { return blockCount <= 0 ? true : false; }
     
 private:
     b2World* mpB2World;

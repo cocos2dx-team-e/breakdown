@@ -200,6 +200,10 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     return true;
 }
 
+/*
+ @Author minegishi
+ BGM再生
+ */
 void GameScene::ccTouchMoved(CCTouch *pTouch,CCEvent *pEvent){
 
     //タップポイント取得

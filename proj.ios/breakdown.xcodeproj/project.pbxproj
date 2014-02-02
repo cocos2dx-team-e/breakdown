@@ -251,6 +251,8 @@
 		FA213F05189502DC00E4D410 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA213F01189502DC00E4D410 /* TitleScene.cpp */; };
 		FA213F081895034000E4D410 /* block in Resources */ = {isa = PBXBuildFile; fileRef = FA213F061895034000E4D410 /* block */; };
 		FA213F091895034000E4D410 /* breakout-set in Resources */ = {isa = PBXBuildFile; fileRef = FA213F071895034000E4D410 /* breakout-set */; };
+		FA359065189E0FDE006030AD /* destroy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA359064189E0FDE006030AD /* destroy.mp3 */; };
+		FA359067189E19F6006030AD /* destroy.wav in Resources */ = {isa = PBXBuildFile; fileRef = FA359066189E19F6006030AD /* destroy.wav */; };
 		FA3A01101883E59100630A01 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3A010E1883E59100630A01 /* GameScene.cpp */; };
 		FA6151071894B1F100F2D4E9 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6151061894B1F100F2D4E9 /* slider.png */; };
 		FA6A16AF188BC15E00D74FF6 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FA6A16AE188BC15E00D74FF6 /* images */; };
@@ -764,6 +766,8 @@
 		FA213F02189502DC00E4D410 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
 		FA213F061895034000E4D410 /* block */ = {isa = PBXFileReference; lastKnownFileType = folder; path = block; sourceTree = "<group>"; };
 		FA213F071895034000E4D410 /* breakout-set */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "breakout-set"; sourceTree = "<group>"; };
+		FA359064189E0FDE006030AD /* destroy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = destroy.mp3; sourceTree = "<group>"; };
+		FA359066189E19F6006030AD /* destroy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = destroy.wav; sourceTree = "<group>"; };
 		FA3A010E1883E59100630A01 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		FA3A010F1883E59100630A01 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
 		FA6151061894B1F100F2D4E9 /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
@@ -1759,6 +1763,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA359066189E19F6006030AD /* destroy.wav */,
+				FA359064189E0FDE006030AD /* destroy.mp3 */,
 				FAC1610F189DDF3B004F14EF /* bgm.mp3 */,
 				FA213F061895034000E4D410 /* block */,
 				FA213F071895034000E4D410 /* breakout-set */,
@@ -1874,6 +1880,8 @@
 				FA213F081895034000E4D410 /* block in Resources */,
 				FA213F091895034000E4D410 /* breakout-set in Resources */,
 				FAC16110189DDF3B004F14EF /* bgm.mp3 in Resources */,
+				FA359065189E0FDE006030AD /* destroy.mp3 in Resources */,
+				FA359067189E19F6006030AD /* destroy.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

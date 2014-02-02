@@ -4,6 +4,9 @@
 #include "Config.h"
 #include "Block.h"
 #include "GameScene.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 Block::Block()
 {
@@ -95,10 +98,17 @@ bool Block::isDead()
     return false;
 }
 
+void Block::setSound()
+{
+    //BGMあれば実装
+    SimpleAudioEngine::sharedEngine()->preloadEffect("destroy.wav");
+};
+
 void Block::explode()
 {
     // 爆発エフェクトを表示する
     CCLog("爆発エフェクトを表示する");
     // 効果音を出す
     CCLog("効果音を出す");
+    SimpleAudioEngine::sharedEngine()->playEffect("destroy.wav");
 }

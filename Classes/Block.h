@@ -16,6 +16,7 @@ class Block
 {
     int life; // ブロックの体力
     b2BodyDef bodyDef; // 物理エンジン上の物質の定義
+    void setSound();
 
 public:
     Block();

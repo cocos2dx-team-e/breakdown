@@ -66,8 +66,9 @@ void Block::hit()
     this->life--;
 
     if (this->isDead()) {
-        // TODO 死んだときの処理
         CCLog("ブロックの体力が0");
+        this->setTag(NODE_TAG_DEAD_BLOCK);
+        explode();
         return;
     }
 

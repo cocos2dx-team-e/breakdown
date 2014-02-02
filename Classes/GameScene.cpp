@@ -100,7 +100,7 @@ bool GameScene::init()
     mpBall = Ball::create();
     addChild(mpBall);
 
-    //
+    // ブロック生成
     Block* pBlock = Block::create();
     pBlock->setLife(BLOCK_DEFAULT_LIFE);
     pBlock->setSpriteAndB2Position(ccp(size.height * 0.5, size.width * 0.5));
@@ -123,21 +123,12 @@ bool GameScene::init()
 
 void GameScene::update(float delta)
 {
-    
-    {// Box2dの更新
-        
-        //It is recommended that a fixed time step is used with Box2D for stability
-        //of the simulation, however, we are using a variable time step here.
-        //You need to make an informed choice, the following URL is useful
-        //http://gafferongames.com/game-physics/fix-your-timestep/
-        
-        int velocityIterations = 8;
-        int positionIterations = 1;
-        
-        // Instruct the world to perform a single step of simulation. It is
-        // generally best to keep the time step and iterations fixed.
-        mpB2World->Step( delta, velocityIterations, positionIterations );
-    }
+    int velocityIterations = 8;
+    int positionIterations = 1;
+    mpB2World->Step( delta, velocityIterations, positionIterations );
+
+    // 死んだブロックの削除
+    sweepDeadBlocks();
 }
 
 void GameScene::draw()
@@ -243,4 +234,30 @@ void GameScene::transitionScene(int transitionCode)
         CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5f,TitleScene::scene()));            
     }
    
+}
+
+/*
+ @Author shun-tak
+ */
+void GameScene::removeObject(CCNode* pObject, void* body)
+{
+    pObject->removeFromParentAndCleanup(true);
+    getB2World()->DestroyBody((b2Body*)body);
+}
+
+/*
+ @Author shun-tak
+ */
+void GameScene::sweepDeadBlocks()
+{
+    // world内の全オブジェクトをループする
+    for (b2Body* b = getB2World()->GetBodyList(); b; b = b->GetNext())
+    {
+        if (b->GetUserData()) {
+            CCNode* ccNode = (CCNode*)b->GetUserData();
+            if (ccNode->getTag() == NODE_TAG_DEAD_BLOCK) {
+                removeObject(ccNode, (void*)b);
+            }
+        }
+    }
 }

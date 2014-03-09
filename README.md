@@ -4,6 +4,13 @@ breakdown
 Cocos2d-xで作るiPhone, Android向けブロック崩し (Breakdown) の開発リポジトリです。
 
 
+動作環境
+--------
+
+- Cocos2d-x 2.2.2
+- Xcode 4
+
+
 将来の機能
 ----------
 
